@@ -1,5 +1,7 @@
 # Claude Code Best Practices
 
+> **Last updated:** March 2026 · Covers Claude Code v1.x
+
 A comprehensive guide to getting the most out of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's agentic coding tool that lives in your terminal.
 
 Claude Code connects directly to your development environment, understands your codebase, and helps you write, debug, and ship code faster. This wiki covers everything from first-time setup to advanced workflows and real-world configuration examples.
@@ -58,7 +60,7 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 
 ## Examples
 
-Real-world CLAUDE.md files and configuration patterns:
+### CLAUDE.md Templates
 
 | Example | Description |
 |---------|-------------|
@@ -66,6 +68,11 @@ Real-world CLAUDE.md files and configuration patterns:
 | [Python Project](examples/claude-md-python.md) | CLAUDE.md for a FastAPI backend service |
 | [Monorepo](examples/claude-md-monorepo.md) | CLAUDE.md for a multi-package monorepo |
 | [Minimal](examples/claude-md-minimal.md) | Minimal but effective CLAUDE.md |
+
+### Configuration References
+
+| Example | Description |
+|---------|-------------|
 | [Hook Scripts](examples/hook-scripts.md) | Ready-to-use hook configurations for common tasks |
 | [MCP Configs](examples/mcp-configs.md) | Sample MCP server setups for popular services |
 
