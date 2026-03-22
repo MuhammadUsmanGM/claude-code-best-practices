@@ -40,6 +40,7 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [Hooks](guides/hooks.md) | Pre/post tool hooks for automation |
 | [Multi-Agent](guides/multi-agent.md) | Teams, agent swarms, and worktrees |
 | [IDE Integration](guides/ide-integration.md) | VS Code, JetBrains setup and tips |
+| [CI and Automation](guides/ci-and-automation.md) | Headless mode, piping, scripting, CI pipelines, containers |
 | [Security Practices](guides/security-practices.md) | Secrets management, .claudeignore, safe permission patterns |
 | [Team Setup](guides/team-setup.md) | Sharing configs, settings hierarchy, onboarding teammates |
 

@@ -167,5 +167,5 @@ This layered approach gives you maximum safety without sacrificing productivity.
 - [Getting Started](getting-started.md) -- Basic setup and CLI usage
 - [Workflow Patterns](workflow-patterns.md) -- Workflows that benefit from mode switching
 - [Tips and Tricks](tips-and-tricks.md) -- CLI flags and shortcuts
-- [Common Mistakes](common-mistakes.md) -- Permission-related anti-patterns
+- [CI and Automation](ci-and-automation.md) -- Using --dangerously-skip-permissions in pipelines and containers
 - [Security Practices](security-practices.md) -- Secrets management and safe patterns

@@ -139,6 +139,6 @@ git diff HEAD~1
 ## See Also
 
 - [Permission Modes](permission-modes.md) -- configuring and understanding permission levels
+- [CI and Automation](ci-and-automation.md) -- safe use of --dangerously-skip-permissions in pipelines
 - [MCP Servers](mcp-servers.md) -- secure configuration of external tool servers
-- [Common Mistakes](common-mistakes.md) -- security-related pitfalls to avoid
 - [Hooks](hooks.md) -- setting up audit logging with PostToolUse hooks

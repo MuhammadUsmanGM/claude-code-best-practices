@@ -144,7 +144,7 @@ If Claude starts implementing the wrong approach, hit Escape and clarify:
 
 ## See Also
 
-- [Cost Management](./cost-management.md) — /compact and other cost-saving techniques
-- [Git Workflow](./git-workflow.md) — Git-specific commands and patterns
-- [Troubleshooting](./troubleshooting.md) — fixes for common issues
-- [Common Mistakes](./common-mistakes.md) — anti-patterns to avoid
+- [CI and Automation](ci-and-automation.md) — Headless mode, piping, scripting, and CI pipelines in depth
+- [Cost Management](cost-management.md) — /compact and other cost-saving techniques
+- [Git Workflow](git-workflow.md) — Git-specific commands and patterns
+- [Troubleshooting](troubleshooting.md) — fixes for common issues
