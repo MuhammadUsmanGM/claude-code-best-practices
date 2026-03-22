@@ -133,3 +133,4 @@ For complete real-world examples, see the [Examples](../README.md) section in th
 - [Prompt Tips](prompt-tips.md) -- Writing effective instructions for Claude
 - [Context Management](context-management.md) -- Managing conversation context
 - [Common Mistakes](common-mistakes.md) -- Anti-patterns to avoid
+- [Team Setup](team-setup.md) -- Sharing CLAUDE.md across a team

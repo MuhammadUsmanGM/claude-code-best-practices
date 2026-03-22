@@ -168,3 +168,4 @@ This layered approach gives you maximum safety without sacrificing productivity.
 - [Workflow Patterns](workflow-patterns.md) -- Workflows that benefit from mode switching
 - [Tips and Tricks](tips-and-tricks.md) -- CLI flags and shortcuts
 - [Common Mistakes](common-mistakes.md) -- Permission-related anti-patterns
+- [Security Practices](security-practices.md) -- Secrets management and safe patterns

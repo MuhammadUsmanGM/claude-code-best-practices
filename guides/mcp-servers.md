@@ -142,3 +142,5 @@ Enable verbose logging by running Claude Code with `--mcp-debug` to see the full
 - [Hooks](hooks.md) — Another way to extend Claude Code behavior
 - [IDE Integration](ide-integration.md) — Using MCP servers alongside your editor
 - [CLAUDE.md Guide](claude-md-guide.md) — Documenting MCP tools for your team
+- [Security Practices](security-practices.md) -- Keeping MCP credentials safe
+- [MCP Config Examples](../examples/mcp-configs.md) -- Ready-to-use server configurations

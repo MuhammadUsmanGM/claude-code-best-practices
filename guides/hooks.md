@@ -154,3 +154,5 @@ esac
 - [CLAUDE.md Guide](claude-md-guide.md) — Documenting hook behavior for your team
 - [Getting Started](getting-started.md) — Initial project configuration
 - [IDE Integration](ide-integration.md) — Hooks alongside editor workflows
+- [Hook Script Examples](../examples/hook-scripts.md) -- Ready-to-use hook configurations
+- [Security Practices](security-practices.md) -- Security-focused hooks

@@ -147,3 +147,4 @@ Or use `/clear` and start fresh with a better-scoped prompt.
 - [Cost Management](./cost-management.md) — avoid wasting tokens
 - [Tips and Tricks](./tips-and-tricks.md) — shortcuts for more efficient workflows
 - [Troubleshooting](./troubleshooting.md) — fixing problems when they occur
+- [Security Practices](security-practices.md) -- Avoiding security anti-patterns

@@ -38,6 +38,8 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [Hooks](guides/hooks.md) | Pre/post tool hooks for automation |
 | [Multi-Agent](guides/multi-agent.md) | Teams, agent swarms, and worktrees |
 | [IDE Integration](guides/ide-integration.md) | VS Code, JetBrains setup and tips |
+| [Security Practices](guides/security-practices.md) | Secrets management, .claudeignore, safe permission patterns |
+| [Team Setup](guides/team-setup.md) | Sharing configs, settings hierarchy, onboarding teammates |
 
 ### Cost and Efficiency
 
@@ -64,10 +66,12 @@ Real-world CLAUDE.md files and configuration patterns:
 | [Python Project](examples/claude-md-python.md) | CLAUDE.md for a FastAPI backend service |
 | [Monorepo](examples/claude-md-monorepo.md) | CLAUDE.md for a multi-package monorepo |
 | [Minimal](examples/claude-md-minimal.md) | Minimal but effective CLAUDE.md |
+| [Hook Scripts](examples/hook-scripts.md) | Ready-to-use hook configurations for common tasks |
+| [MCP Configs](examples/mcp-configs.md) | Sample MCP server setups for popular services |
 
 ## Contributing
 
-Found an issue or want to suggest an improvement? Open an issue or submit a pull request.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding new guides, style conventions, and the PR process.
 
 ## License
 
