@@ -107,11 +107,24 @@ claude --continue          # Continue the last conversation with a new prompt
 
 For more CLI options and shortcuts, see [Tips and Tricks](tips-and-tricks.md).
 
+## Generate a CLAUDE.md (Fast Path)
+
+The fastest way to get productive is to generate a CLAUDE.md file for your project. You have two options:
+
+**Option A: Interactive script** — answers 7 questions, outputs a ready-to-use file:
+
+```bash
+bash tools/generate-claude-md.sh
+```
+
+**Option B: Let Claude do it** — paste the [Quickstart Prompt](../tools/quickstart-prompt.md) into a Claude session and it auto-generates one by reading your project files.
+
+Either way, you go from zero to a working CLAUDE.md in under 60 seconds. See the [CLAUDE.md Guide](claude-md-guide.md) for how to refine it further.
+
 ## Tips for Your First Session
 
 - **Start with exploration**: Ask Claude to summarize your project or explain a module before making changes.
 - **Be specific**: Instead of "fix the bug", say "fix the null pointer in `processOrder` when the cart is empty".
-- **Create a CLAUDE.md file**: Give Claude persistent context about your project. See the [CLAUDE.md Guide](claude-md-guide.md).
 - **Review changes**: Claude shows you diffs before applying them. Take a moment to review.
 - **Use plan mode for big tasks**: Prefix complex requests with "plan:" or use `--plan` to have Claude outline an approach before executing.
 

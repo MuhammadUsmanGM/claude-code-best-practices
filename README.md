@@ -10,7 +10,8 @@ Claude Code connects directly to your development environment, understands your 
 
 1. **Install**: `npm install -g @anthropic-ai/claude-code`
 2. **Authenticate**: Run `claude` and follow the prompts to log in
-3. **Start coding**: Navigate to your project and run `claude`
+3. **Generate a CLAUDE.md**: Run `bash tools/generate-claude-md.sh` in your project, or use the [Quickstart Prompt](tools/quickstart-prompt.md) to have Claude generate one for you
+4. **Start coding**: Navigate to your project and run `claude`
 
 For detailed setup instructions, see the [Getting Started](guides/getting-started.md) guide.
 
@@ -75,6 +76,13 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [Python Project](examples/claude-md-python.md) | CLAUDE.md for a FastAPI backend service |
 | [Monorepo](examples/claude-md-monorepo.md) | CLAUDE.md for a multi-package monorepo |
 | [Minimal](examples/claude-md-minimal.md) | Minimal but effective CLAUDE.md |
+
+### Toolbox
+
+| Tool | Description |
+|------|-------------|
+| [CLAUDE.md Generator](tools/generate-claude-md.sh) | Interactive shell script that generates a CLAUDE.md in 60 seconds |
+| [Quickstart Prompt](tools/quickstart-prompt.md) | Copy-paste prompt that makes Claude auto-generate a CLAUDE.md |
 
 ### Configuration References
 
