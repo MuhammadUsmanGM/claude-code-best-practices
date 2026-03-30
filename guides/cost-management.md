@@ -12,7 +12,47 @@ Key cost factors:
 - **Tool output** — command results, search results, and file contents all count
 - **Model choice** — Opus costs more than Sonnet, which costs more than Haiku
 
-## Use /compact Regularly
+## Track Your Actual Spend
+
+Before optimizing, know what you are spending. Use these methods to get real numbers:
+
+### Session-Level Tracking
+
+Use `/cost` during a session to see how many tokens you have used and what it costs. Check this periodically to build intuition about which tasks are expensive.
+
+### Dashboard Monitoring
+
+Check the [Anthropic Console](https://console.anthropic.com/) for daily and monthly usage breakdowns. Look at:
+
+- **Daily spend trend** — is it climbing or stable?
+- **Per-model breakdown** — how much goes to Opus vs Sonnet vs Haiku?
+- **Peak usage days** — what tasks drove the spikes?
+
+### Setting Budget Alerts
+
+Set spending limits in the Anthropic Console to avoid surprises. Start with a daily cap that matches your expected usage, then adjust after a week of real data.
+
+## The Model Selection Rule of Thumb
+
+Pick the cheapest model that gets the job done:
+
+| Task Type | Recommended Model | Why |
+|-----------|------------------|-----|
+| Quick questions, boilerplate, renames | Haiku | Fast, cheap, good enough |
+| Feature implementation, code review, tests | Sonnet | Best balance of quality and cost |
+| Complex multi-file refactors, subtle bugs, architecture | Opus | Worth the premium for hard problems |
+
+Switch models mid-session with `/model`:
+
+```
+/model claude-haiku-4-5-20251001    # Drop to Haiku for simple tasks
+/model claude-sonnet-4-6            # Back to Sonnet for real work
+/model claude-opus-4-6              # Upgrade for the hard part
+```
+
+Most developers find that **80% of their work is Sonnet-appropriate.** Reserve Opus for the 10-20% that actually needs it.
+
+## Use /compact — Your Biggest Cost Lever
 
 The `/compact` command summarizes your conversation history, dramatically reducing context size. This is the single most effective cost-saving habit.
 
@@ -27,8 +67,25 @@ The `/compact` command summarizes your conversation history, dramatically reduci
 **When to compact:**
 - After completing a sub-task before moving to the next one
 - When you notice responses slowing down
-- Every 20-30 exchanges as a rule of thumb
+- Every 15-20 exchanges as a rule of thumb
 - Before starting a new line of work in the same session
+
+**What it saves:** A 30-message conversation can accumulate 100K+ tokens of context. Compacting cuts this to 5-10K, meaning every subsequent message costs a fraction of what it would otherwise.
+
+## One Task Per Session
+
+Start a new `claude` session for each distinct task. A session about "fix the login bug" should not continue into "now add the search feature." Each new topic inherits all the context from the previous one, inflating costs for no benefit.
+
+```bash
+# Task 1: fix the bug
+claude "Fix the null check in auth.ts:42"
+# Done. Exit.
+
+# Task 2: new feature (fresh session, clean context)
+claude "Add full-text search to the /products endpoint"
+```
+
+Use `--resume` only when you genuinely need to continue previous work.
 
 ## Scope Your Tasks
 
@@ -41,20 +98,6 @@ Smaller, focused tasks cost less than broad, open-ended ones. Instead of asking 
 # Cheaper — focused, specific
 "Refactor the /users endpoint in src/routes/users.ts to use the new auth middleware"
 ```
-
-## Use the Right Model for the Job
-
-Not every task needs the most powerful model. Use `/model` to switch:
-
-```
-/model claude-haiku-4-5-20251001    # Simple tasks, quick questions
-/model claude-sonnet-4-6            # Default, good balance
-/model claude-opus-4-6              # Complex architecture, tricky bugs
-```
-
-**Good tasks for Haiku:** generating boilerplate, simple renames, formatting, straightforward questions about code.
-
-**Worth using Opus for:** complex debugging, architectural decisions, multi-file refactors with subtle interactions.
 
 ## Efficient Prompting Patterns
 
@@ -78,27 +121,35 @@ How you write prompts affects how many tokens Claude uses exploring and respondi
 "Fix the rate limiter in src/middleware/rateLimit.ts"
 ```
 
-**Use CLAUDE.md to avoid repeating context** — instructions in CLAUDE.md are loaded once rather than typed every session. See [CLAUDE.md Setup](./claude-md-guide.md).
+**Use CLAUDE.md to avoid repeating context** — instructions in CLAUDE.md are loaded once rather than typed every session. See [CLAUDE.md Guide](claude-md-guide.md).
 
-## Monitoring Spend
+## Daily Spend Patterns
 
-- Check your usage dashboard at the Anthropic Console or your IDE's billing page
-- Track how many messages a task takes — if a simple task takes more than 10 exchanges, consider whether your prompts could be more specific
-- Use `/cost` (if available) to see session token usage
+To get a feel for realistic usage, track your own spend for a week. Most developers fall into one of these patterns:
 
-## Quick Reference
+- **Light usage** (exploration, questions, small fixes): primarily Haiku/Sonnet, low context accumulation
+- **Moderate usage** (feature development, code review): Sonnet with occasional Opus, regular compacting
+- **Heavy usage** (full-day pair programming, large refactors): mixed models, aggressive compacting, multiple sessions
+
+The key variable is not which model you use — it is **how long your conversations get**. A 50-message Sonnet session costs more than a 5-message Opus session.
+
+## Cost Reduction Checklist
 
 | Strategy | Impact | Effort |
 |----------|--------|--------|
-| Use /compact regularly | High | Low |
+| Use `/compact` every 15-20 messages | High | Low |
+| Start fresh sessions per task | High | Low |
 | Scope tasks narrowly | High | Low |
 | Use Haiku for simple work | Medium | Low |
-| Be specific in prompts | Medium | Low |
-| Use CLAUDE.md for context | Medium | One-time |
-| Monitor usage | Low | Low |
+| Be specific in prompts (include file paths) | Medium | Low |
+| Use CLAUDE.md for persistent context | Medium | One-time |
+| Set budget alerts in the Console | Medium | One-time |
+| Check `/cost` periodically | Low | Low |
 
 ## See Also
 
-- [CLAUDE.md Setup](./claude-md-guide.md) — reduce repeated context with project instructions
-- [Tips and Tricks](./tips-and-tricks.md) — more slash commands and efficiency techniques
-- [Common Mistakes](./common-mistakes.md) — anti-patterns that waste tokens
+- [Performance Tuning](performance-tuning.md) — Model selection and speed optimization in depth
+- [CLAUDE.md Guide](claude-md-guide.md) — Reduce repeated context with project instructions
+- [Context Management](context-management.md) — Deep dive into managing conversation context
+- [Tips and Tricks](tips-and-tricks.md) — More slash commands and efficiency techniques
+- [Common Mistakes](common-mistakes.md) — Anti-patterns that waste tokens
