@@ -144,4 +144,4 @@ In an interactive session, Claude remembers the conversation so far. Build on ea
 - [CLAUDE.md Guide](claude-md-guide.md) -- Provide persistent context so prompts can be shorter
 - [Workflow Patterns](workflow-patterns.md) -- Common development workflows
 - [Permission Modes](permission-modes.md) -- Plan mode and execution modes
-- [Workflow Patterns](workflow-patterns.md) -- Debugging and other development workflows
+- [Debugging](debugging.md) -- Debugging strategies and fix-and-verify workflows

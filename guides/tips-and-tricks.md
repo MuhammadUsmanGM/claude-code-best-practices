@@ -148,3 +148,4 @@ If Claude starts implementing the wrong approach, hit Escape and clarify:
 - [Cost Management](cost-management.md) — /compact and other cost-saving techniques
 - [Git Workflow](git-workflow.md) — Git-specific commands and patterns
 - [Troubleshooting](troubleshooting.md) — fixes for common issues
+- [Skills and Slash Commands](skills-and-slash-commands.md) — Discovering, installing, and creating skills

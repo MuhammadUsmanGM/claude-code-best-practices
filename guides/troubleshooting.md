@@ -139,3 +139,4 @@ When something is not working:
 - [Common Mistakes](./common-mistakes.md) — patterns that lead to problems
 - [Cost Management](./cost-management.md) — managing token usage and rate limits
 - [CLAUDE.md Setup](./claude-md-guide.md) — properly configuring project instructions
+- [Debugging](debugging.md) — Debugging strategies for code issues

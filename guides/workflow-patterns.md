@@ -177,3 +177,5 @@ Claude handles this naturally in a single interactive session -- just guide it t
 - [Permission Modes](permission-modes.md) -- Use plan mode for complex workflows
 - [Context Management](context-management.md) -- Managing context for multi-file work
 - [Git Workflow](git-workflow.md) -- Commits, PRs, and branch management
+- [Debugging](debugging.md) -- Dedicated debugging strategies and workflows
+- [Testing Workflows](testing-workflows.md) -- TDD, test coverage, and fixing flaky tests

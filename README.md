@@ -1,6 +1,6 @@
 # Claude Code Best Practices
 
-> **Last updated:** March 2026 · Covers Claude Code v1.x
+> **Last updated:** March 30, 2026 · v1.1 · Covers Claude Code v1.x
 
 A comprehensive guide to getting the most out of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's agentic coding tool that lives in your terminal.
 
