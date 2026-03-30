@@ -129,6 +129,94 @@ Common problems and solutions:
 
 Enable verbose logging by running Claude Code with `--mcp-debug` to see the full MCP communication.
 
+## Recommended Servers for SaaS Development
+
+These are high-value MCP servers that most development teams benefit from. Install the ones that match your stack.
+
+### GitHub — PR and Issue Management
+
+Manage pull requests, issues, and code review without leaving your terminal:
+
+```json
+"github": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-github"],
+  "env": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_xxxxxxxxxxxx"
+  }
+}
+```
+
+Use cases: create PRs from Claude's changes, review PRs inline, triage issues, check CI status.
+
+### PostgreSQL — Schema Exploration and Queries
+
+Give Claude read access to your database for debugging data issues and generating queries:
+
+```json
+"postgres": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-postgres"],
+  "env": {
+    "POSTGRES_CONNECTION_STRING": "postgresql://user:pass@localhost:5432/mydb"
+  }
+}
+```
+
+Use cases: explore schema, debug bad data, write and test complex queries, verify migrations.
+
+### Linear — Sync Code to Tickets
+
+Connect code changes to your project management workflow:
+
+```json
+"linear": {
+  "command": "npx",
+  "args": ["-y", "@agentic/linear-mcp"],
+  "env": {
+    "LINEAR_API_KEY": "lin_api_xxxxxxxxxxxx"
+  }
+}
+```
+
+Use cases: reference ticket context in prompts, auto-update ticket status, pull acceptance criteria into Claude's context.
+
+### Sentry — Error Monitoring
+
+Pull real production errors into your debugging sessions:
+
+```json
+"sentry": {
+  "command": "npx",
+  "args": ["-y", "@sentry/mcp-server"],
+  "env": {
+    "SENTRY_AUTH_TOKEN": "sntrys_xxxxxxxxxxxx"
+  }
+}
+```
+
+Use cases: fetch the latest errors, get stack traces with context, correlate errors with recent deploys.
+
+### Brave Search — Web Search
+
+Give Claude the ability to search the web for documentation, error messages, and library references:
+
+```json
+"brave-search": {
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+  "env": {
+    "BRAVE_API_KEY": "BSA_xxxxxxxxxxxx"
+  }
+}
+```
+
+Use cases: look up library APIs, find solutions to obscure errors, check latest documentation.
+
+### Finding More Servers
+
+For a comprehensive directory of community MCP servers, see the [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) repository. Evaluate third-party servers carefully before installing — they run with your user permissions.
+
 ## Security Considerations
 
 - Never commit API keys or tokens in `.claude/settings.json`. Use environment variable references or a separate `.env` file.

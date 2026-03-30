@@ -93,6 +93,9 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [React Project](examples/claude-md-react.md) | CLAUDE.md for a React + TypeScript frontend |
 | [Python Project](examples/claude-md-python.md) | CLAUDE.md for a FastAPI backend service |
 | [Monorepo](examples/claude-md-monorepo.md) | CLAUDE.md for a multi-package monorepo |
+| [Next.js/Prisma](examples/claude-md-nextjs.md) | CLAUDE.md for a Next.js App Router + Prisma full-stack app |
+| [Go Microservice](examples/claude-md-go.md) | CLAUDE.md for a Go HTTP service with sqlc and Docker |
+| [Ruby on Rails](examples/claude-md-rails.md) | CLAUDE.md for a Rails 8 + Hotwire application |
 | [Minimal](examples/claude-md-minimal.md) | Minimal but effective CLAUDE.md |
 
 ### Toolbox
