@@ -30,11 +30,16 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 |-------|-------------|
 | [Workflow Patterns](guides/workflow-patterns.md) | Common workflows for bug fixing, features, refactoring, and PR review |
 | [Permission Modes](guides/permission-modes.md) | Understanding and configuring permission levels |
+| [Debugging](guides/debugging.md) | Debugging strategies, stack traces, and fix-and-verify workflows |
+| [Testing Workflows](guides/testing-workflows.md) | Writing tests, TDD with Claude, fixing flaky tests, and coverage |
+| [Migration Guide](guides/migration-guide.md) | Migrating frameworks, languages, dependencies, and databases |
 
 ### Advanced Topics
 
 | Guide | Description |
 |-------|-------------|
+| [Custom Instructions](guides/custom-instructions.md) | Advanced CLAUDE.md patterns for personas and role-based behavior |
+| [Skills and Slash Commands](guides/skills-and-slash-commands.md) | Discovering, installing, and creating custom skills |
 | [Context Management](guides/context-management.md) | Managing conversation length and keeping context focused |
 | [MCP Servers](guides/mcp-servers.md) | Setting up and using Model Context Protocol servers |
 | [Hooks](guides/hooks.md) | Pre/post tool hooks for automation |
@@ -48,6 +53,7 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 
 | Guide | Description |
 |-------|-------------|
+| [Performance Tuning](guides/performance-tuning.md) | Model selection, fast mode, and optimizing speed and cost |
 | [Cost Management](guides/cost-management.md) | Monitoring usage, reducing token consumption, and budgeting |
 | [Git Workflow](guides/git-workflow.md) | Commits, PRs, branch management with Claude Code |
 | [Tips and Tricks](guides/tips-and-tricks.md) | Keyboard shortcuts, slash commands, headless mode, CLI flags |
