@@ -6,6 +6,24 @@ A comprehensive guide to getting the most out of [Claude Code](https://docs.anth
 
 Claude Code connects directly to your development environment, understands your codebase, and helps you write, debug, and ship code faster. This wiki covers everything from first-time setup to advanced workflows and real-world configuration examples.
 
+### See it in action
+
+```
+$ claude "Fix the failing test in src/utils/dates.test.ts"
+
+ ● Reading src/utils/dates.test.ts...
+ ● Reading src/utils/dates.ts...
+ ● Found the bug: parseDate() doesn't handle ISO strings with timezone offsets.
+ ● Editing src/utils/dates.ts — added offset normalization before parsing.
+ ● Running npm test...
+ ● All 47 tests passing.
+
+ Done. Fixed the timezone offset handling in parseDate().
+ One file changed, 3 lines added, 1 line removed.
+```
+
+One prompt. Claude reads the code, finds the bug, fixes it, and verifies the tests pass.
+
 ## Quick Start
 
 1. **Install**: `npm install -g @anthropic-ai/claude-code`
