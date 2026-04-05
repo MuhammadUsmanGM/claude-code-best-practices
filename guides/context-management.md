@@ -1,22 +1,24 @@
 # Managing the Context Window
 
-Claude Code operates within a finite context window. How you manage that window directly affects response quality, speed, and cost. This guide covers strategies for keeping context focused and knowing when to start fresh.
+Claude Code operates within a context window that can hold up to **1 million tokens** per session (as of v2.1.92). How you manage that window directly affects response quality, speed, and cost. This guide covers strategies for keeping context focused and knowing when to start fresh.
 
 ## How Context Works
 
-Every message you send, every file Claude reads, and every tool result occupies tokens in the context window. As the conversation grows, older messages get compressed automatically. Understanding this lifecycle helps you work more effectively:
+Every message you send, every file Claude reads, and every tool result occupies tokens in the context window. With the 1M token limit, you can sustain much longer sessions than before -- reading dozens of files, making multi-file changes, and iterating extensively without hitting the ceiling. However, as the conversation grows, older messages get compressed automatically. Understanding this lifecycle helps you work more effectively:
 
 1. **Fresh context** — Early in a conversation, Claude has full access to everything discussed.
-2. **Compression** — As the window fills, the system summarizes older messages to make room.
-3. **Degradation** — After heavy compression, nuance from earlier exchanges may be lost.
+2. **Active window** — With 1M tokens, you can comfortably work through large features, multi-file refactors, and extended debugging sessions in a single conversation.
+3. **Compression** — As the window fills, the system summarizes older messages to make room.
+4. **Degradation** — After heavy compression, nuance from earlier exchanges may be lost.
 
 ## The /compact Command
 
-Use `/compact` to manually trigger context compression before hitting limits. This is useful when:
+Use `/compact` to manually trigger context compression. With the 1M token window, you no longer need to compact aggressively -- but it remains valuable for cost control and keeping Claude focused. Compact when:
 
-- You have finished one subtask and are moving to another
+- You have finished one subtask and are moving to another (reduces cost of subsequent messages)
 - The conversation has accumulated a lot of tool output you no longer need
 - You notice responses slowing down or becoming less accurate
+- You want to reduce token spend even though you have not hit the limit
 
 You can also pass a prompt to `/compact` to guide what gets preserved:
 
@@ -51,6 +53,20 @@ Find all the places where we handle authentication errors
 and summarize the patterns used.
 ```
 
+## What 1M Tokens Gets You
+
+To put the limit in perspective:
+
+| Content | Approximate tokens |
+|---------|-------------------|
+| One source file (~200 lines) | ~2,000 |
+| 10 source files | ~20,000 |
+| A 50-message conversation with tool use | ~100,000-200,000 |
+| A full-day pair programming session | ~400,000-600,000 |
+| Reading an entire medium codebase (500 files) | ~1,000,000 |
+
+Most development sessions -- even long ones -- will stay well within the 1M limit. You can now comfortably read entire modules, iterate on complex features, and run multiple test-fix cycles without running out of room.
+
 ## When to Start Fresh
 
 Start a new conversation when:
@@ -58,7 +74,7 @@ Start a new conversation when:
 - You are switching to a completely unrelated task
 - The conversation has gone through multiple rounds of compression
 - Claude starts "forgetting" decisions made earlier in the conversation
-- You have accumulated more than ~50 back-and-forth exchanges
+- You want to reset cost accumulation (each message in a long session sends the full context)
 
 There is no penalty for starting fresh. Claude reads your `CLAUDE.md` and project files at the start of every conversation, so project context is always available.
 

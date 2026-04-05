@@ -6,8 +6,10 @@ Claude Code consumes tokens with every interaction. Understanding how token usag
 
 Every message you send and every response Claude generates costs tokens. But the biggest driver of cost is **context size** — the accumulated conversation history that gets sent with each new message. As your conversation grows, each exchange becomes more expensive.
 
+With the **1M token session limit** (as of v2.1.92), you can sustain much longer sessions than before. This is great for productivity but means a single extended session can accumulate significant cost if you are not mindful.
+
 Key cost factors:
-- **Conversation length** — longer sessions mean more tokens per message
+- **Conversation length** — longer sessions mean more tokens per message (a 500K-token session sends 500K tokens with every new exchange)
 - **File reads** — every file Claude reads adds to the context
 - **Tool output** — command results, search results, and file contents all count
 - **Model choice** — Opus costs more than Sonnet, which costs more than Haiku
@@ -67,10 +69,10 @@ The `/compact` command summarizes your conversation history, dramatically reduci
 **When to compact:**
 - After completing a sub-task before moving to the next one
 - When you notice responses slowing down
-- Every 15-20 exchanges as a rule of thumb
+- When `/cost` shows context growing beyond 200K tokens and you are doing routine work
 - Before starting a new line of work in the same session
 
-**What it saves:** A 30-message conversation can accumulate 100K+ tokens of context. Compacting cuts this to 5-10K, meaning every subsequent message costs a fraction of what it would otherwise.
+**What it saves:** A long session can accumulate 300K-500K tokens of context. Compacting cuts this to 5-10K, meaning every subsequent message costs a fraction of what it would otherwise. With the 1M token limit, you will not _need_ to compact to avoid hitting the ceiling -- but you should still compact to **control costs**. A message at 500K context costs 50x more than one at 10K context.
 
 ## One Task Per Session
 

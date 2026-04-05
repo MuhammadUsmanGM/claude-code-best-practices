@@ -49,17 +49,28 @@ Toggle fast mode with `/fast` in any session. Fast mode uses the same model but 
 
 Fast mode does not reduce quality — it uses the same Claude Opus 4.6 model with faster output generation.
 
+## The 1M Token Session Limit
+
+As of v2.1.92, Claude Code supports sessions up to **1 million tokens**. This means you can work through large features, multi-file refactors, and extended debugging sessions without hitting context limits. However, larger context does not mean free -- every token in the context window is sent with each new message, affecting both speed and cost.
+
+**Performance implications of the 1M limit:**
+- Sessions under 200K tokens feel fast and responsive
+- Sessions at 400K-600K tokens may start to feel noticeably slower
+- Sessions approaching 1M tokens work but cost significantly more per exchange
+- `/compact` remains your primary tool for keeping sessions lean and fast
+
 ## Context Management for Performance
 
-Long conversations slow Claude down and increase token costs. Keep sessions lean:
+Long conversations slow Claude down and increase token costs. The 1M limit gives you room to breathe, but keeping sessions lean still improves speed:
 
-### Use `/compact` Regularly
+### Use `/compact` Strategically
 
-The `/compact` command compresses your conversation history while preserving key context. Use it when:
+The `/compact` command compresses your conversation history while preserving key context. With the 1M limit, you no longer need to compact to survive -- but compact to **stay fast**:
 
-- Your session has been running for a while
-- You are switching to a new task in the same session
-- Claude seems to be losing track of earlier context
+- After finishing a subtask, before starting the next one
+- When context exceeds ~200K tokens and responses feel slower
+- When Claude seems to be losing track of earlier context
+- When `/cost` shows spending climbing faster than expected
 
 ### Start Fresh for New Tasks
 

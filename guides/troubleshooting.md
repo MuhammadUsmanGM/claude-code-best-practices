@@ -32,16 +32,21 @@ echo $ANTHROPIC_API_KEY | head -c 10
 
 **Symptom:** "Context length exceeded" errors, or Claude seems to forget earlier parts of the conversation.
 
+As of v2.1.92, the session limit is **1 million tokens**, so hitting the ceiling is much less common. If you do hit it, or if Claude seems to forget earlier context (due to automatic compression):
+
 **Fixes:**
-- Run `/compact` immediately — this is the primary fix
+- Run `/compact` immediately — this compresses history and frees space
+- Run `/compact focus on [topic]` to keep specific context while compressing the rest
 - Run `/clear` and start a fresh session if compact is not enough
-- Break your work into smaller sessions rather than one marathon conversation
+- Break your work into smaller sessions — even with 1M tokens, marathon sessions degrade quality after many compression cycles
 - Avoid reading very large files in a single operation; read specific sections instead
 
 ```
 # Instead of reading a 5000-line file
 "read src/bigfile.ts lines 200-250"
 ```
+
+**Note:** With 1M tokens, most sessions will never hit the limit. If you are regularly running out, you may be reading too many files or running too many commands in a single session. Consider using subagents for heavy exploration -- they run in their own context window.
 
 ## MCP Connection Failures
 
