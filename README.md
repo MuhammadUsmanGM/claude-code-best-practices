@@ -1,6 +1,6 @@
 # Claude Code Best Practices
 
-> **Last updated:** March 30, 2026 · v1.1 · Covers Claude Code v1.x
+> **Last updated:** April 5, 2026 · v1.2 · Covers Claude Code v1.x
 
 A comprehensive guide to getting the most out of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's agentic coding tool that lives in your terminal.
 
@@ -67,6 +67,11 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [CI and Automation](guides/ci-and-automation.md) | Headless mode, piping, scripting, CI pipelines, containers |
 | [Security Practices](guides/security-practices.md) | Secrets management, .claudeignore, safe permission patterns |
 | [Team Setup](guides/team-setup.md) | Sharing configs, settings hierarchy, onboarding teammates |
+| [Building Custom MCP Servers](guides/building-custom-mcp-servers.md) | Designing, building, testing, and deploying your own MCP servers |
+| [Advanced Architecture](guides/advanced-architecture.md) | System design, plan mode for architecture, and trade-off evaluation |
+| [Enterprise Patterns](guides/enterprise-patterns.md) | Governance, shared configs at scale, access control across large teams |
+| [Cloud Integration](guides/cloud-integration.md) | Using Claude Code with AWS, GCP, Azure, serverless, Docker, and Kubernetes |
+| [Case Studies](guides/case-studies.md) | Real-world walkthroughs of migrations, refactors, and feature builds |
 
 ### Cost and Efficiency
 

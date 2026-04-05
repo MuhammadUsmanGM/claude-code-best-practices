@@ -260,4 +260,5 @@ Automated runs can accumulate cost quickly. Keep spend predictable:
 - [Tips and Tricks](tips-and-tricks.md) — Keyboard shortcuts, slash commands, and interactive tips
 - [Permission Modes](permission-modes.md) — Full breakdown of permission options
 - [Security Practices](security-practices.md) — Keeping credentials safe in automated environments
+- [Cloud Integration](cloud-integration.md) — Using Claude Code with AWS, GCP, Azure, and containers
 - [Cost Management](cost-management.md) — Token budgeting and efficient prompting

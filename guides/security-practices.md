@@ -141,4 +141,5 @@ git diff HEAD~1
 - [Permission Modes](permission-modes.md) -- configuring and understanding permission levels
 - [CI and Automation](ci-and-automation.md) -- safe use of --dangerously-skip-permissions in pipelines
 - [MCP Servers](mcp-servers.md) -- secure configuration of external tool servers
+- [Enterprise Patterns](enterprise-patterns.md) -- governance and compliance at org scale
 - [Hooks](hooks.md) -- setting up audit logging with PostToolUse hooks

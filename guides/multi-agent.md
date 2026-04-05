@@ -111,4 +111,6 @@ Agent-1 starts on the shared foundation. Once Task 1 completes, agents 2 and 3 w
 - [Getting Started](getting-started.md) — Setting up Claude Code before using teams
 - [Hooks](hooks.md) — Automating actions across agent workflows
 - [Prompt Tips](prompt-tips.md) — Writing clear task descriptions for agents
+- [Advanced Architecture](advanced-architecture.md) -- Using multi-agent for architectural design
+- [Case Studies](case-studies.md) -- Real-world examples of multi-agent workflows
 - [Team Setup](team-setup.md) -- Organizing team configurations

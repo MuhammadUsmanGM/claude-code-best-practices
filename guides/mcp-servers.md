@@ -230,5 +230,6 @@ For a comprehensive directory of community MCP servers, see the [Awesome MCP Ser
 - [Hooks](hooks.md) — Another way to extend Claude Code behavior
 - [IDE Integration](ide-integration.md) — Using MCP servers alongside your editor
 - [CLAUDE.md Guide](claude-md-guide.md) — Documenting MCP tools for your team
+- [Building Custom MCP Servers](building-custom-mcp-servers.md) -- Full guide to designing and building your own MCP servers
 - [Security Practices](security-practices.md) -- Keeping MCP credentials safe
 - [MCP Config Examples](../examples/mcp-configs.md) -- Ready-to-use server configurations

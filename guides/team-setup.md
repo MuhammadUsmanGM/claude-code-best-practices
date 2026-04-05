@@ -150,4 +150,5 @@ Enterprise settings are distributed through your organization's admin tooling an
 - [CLAUDE.md Guide](claude-md-guide.md) -- writing effective project instructions
 - [Permission Modes](permission-modes.md) -- understanding and configuring permission levels
 - [MCP Servers](mcp-servers.md) -- configuring external tool integrations
+- [Enterprise Patterns](enterprise-patterns.md) -- scaling Claude Code across large organizations
 - [Security Practices](security-practices.md) -- protecting secrets and auditing actions

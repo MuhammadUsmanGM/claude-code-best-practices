@@ -147,3 +147,4 @@ claude "Review the migrated code for any behavioral differences from the origina
 - [Context Management](context-management.md) -- Managing long migration sessions
 - [CLAUDE.md Guide](claude-md-guide.md) -- Documenting migration rules for consistency
 - [Testing Workflows](testing-workflows.md) -- Verifying migrations with tests
+- [Case Studies](case-studies.md) -- Real-world migration walkthroughs (CRA to Next.js, REST to GraphQL)

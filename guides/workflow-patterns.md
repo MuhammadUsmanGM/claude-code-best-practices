@@ -179,3 +179,4 @@ Claude handles this naturally in a single interactive session -- just guide it t
 - [Git Workflow](git-workflow.md) -- Commits, PRs, and branch management
 - [Debugging](debugging.md) -- Dedicated debugging strategies and workflows
 - [Testing Workflows](testing-workflows.md) -- TDD, test coverage, and fixing flaky tests
+- [Case Studies](case-studies.md) -- Real-world walkthroughs of complete workflows
