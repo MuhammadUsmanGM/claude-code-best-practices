@@ -139,6 +139,102 @@ case "$EXT" in
 esac
 ```
 
+## More Hook Recipes
+
+### Auto-Run Tests After Source File Edits
+
+Run the related test file whenever Claude edits a source file:
+
+```json
+{
+  "matcher": "Edit|Write",
+  "command": "bash .claude/hooks/auto-test.sh \"$CLAUDE_FILE_PATH\"",
+  "description": "Run related tests after file edits"
+}
+```
+
+```bash
+#!/bin/bash
+# .claude/hooks/auto-test.sh
+FILE="$1"
+# Skip if editing a test file itself
+echo "$FILE" | grep -qE '\.(test|spec)\.' && exit 0
+# Skip non-source files
+echo "$FILE" | grep -qE '\.(ts|tsx|js|jsx)$' || exit 0
+# Derive test path and run if it exists
+TEST=$(echo "$FILE" | sed 's/\.tsx\?$/.test&/')
+[ -f "$TEST" ] && npx jest "$TEST" --no-coverage 2>&1 | tail -10
+exit 0
+```
+
+### Type Check After TypeScript Edits
+
+```json
+{
+  "matcher": "Edit|Write",
+  "command": "if echo \"$CLAUDE_FILE_PATH\" | grep -qE '\\.tsx?$'; then npx tsc --noEmit 2>&1 | head -20; fi",
+  "description": "Type check after TypeScript edits"
+}
+```
+
+### Python Lint and Format Pipeline
+
+```json
+{
+  "matcher": "Edit|Write",
+  "command": "if echo \"$CLAUDE_FILE_PATH\" | grep -q '\\.py$'; then ruff format \"$CLAUDE_FILE_PATH\" && ruff check --fix \"$CLAUDE_FILE_PATH\"; fi",
+  "description": "Format and lint Python files after edits"
+}
+```
+
+### Go Vet and Format
+
+```json
+{
+  "matcher": "Edit|Write",
+  "command": "if echo \"$CLAUDE_FILE_PATH\" | grep -q '\\.go$'; then gofmt -w \"$CLAUDE_FILE_PATH\" && go vet ./... 2>&1 | head -10; fi",
+  "description": "Format and vet Go files after edits"
+}
+```
+
+### Slack Notification on Task Completion
+
+Send a Slack message when Claude finishes a task:
+
+```json
+{
+  "matcher": "",
+  "command": "curl -s -X POST -H 'Content-Type: application/json' -d '{\"text\":\"Claude Code: '\"$CLAUDE_NOTIFICATION\"'\"}' \"$SLACK_WEBHOOK_URL\" > /dev/null",
+  "description": "Send Slack notification on completion"
+}
+```
+
+Set `SLACK_WEBHOOK_URL` in your environment or `.env` file.
+
+### Block File Edits Outside Project
+
+Prevent Claude from editing files outside the project root:
+
+```json
+{
+  "matcher": "Edit|Write",
+  "command": "echo \"$CLAUDE_FILE_PATH\" | grep -q '^/' && ! echo \"$CLAUDE_FILE_PATH\" | grep -q \"$(pwd)\" && echo 'BLOCKED: edit outside project root' >&2 && exit 1 || true",
+  "description": "Block edits outside project directory"
+}
+```
+
+### Migration Safety Check
+
+Prevent Claude from running database migrations without confirmation:
+
+```json
+{
+  "matcher": "Bash",
+  "command": "if echo \"$CLAUDE_COMMAND\" | grep -qE 'migrate|migration'; then echo 'WARNING: Migration detected. Verify the migration file before proceeding.' >&2; fi",
+  "description": "Warn on database migration commands"
+}
+```
+
 ## Tips and Caveats
 
 - **Keep hooks fast.** Claude waits for hooks to complete. Long-running hooks slow down the entire workflow.

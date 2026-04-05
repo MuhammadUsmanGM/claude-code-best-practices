@@ -97,6 +97,57 @@ Lead creates:
 
 Agent-1 starts on the shared foundation. Once Task 1 completes, agents 2 and 3 work in parallel on their respective providers. Testing and docs follow.
 
+## More Examples
+
+### Full-Stack Feature with API and UI
+
+```
+Create a team to add a file upload feature:
+1. Backend: Add multipart upload endpoint, S3 storage integration,
+   file metadata model and migration
+2. Frontend: Build drag-and-drop upload component, progress bar,
+   file list view with preview thumbnails
+3. Tests: Integration tests for upload API, component tests for
+   the upload widget, E2E test for the full flow
+```
+
+Agents 1 and 2 work in parallel since the frontend can be built against a mocked API. Agent 3 starts after both are done.
+
+### Codebase-Wide Refactor
+
+```
+Create a team to migrate all API calls from axios to fetch:
+1. Agent 1: Migrate src/api/users.ts, src/api/orders.ts, src/api/products.ts
+2. Agent 2: Migrate src/api/auth.ts, src/api/settings.ts, src/api/webhooks.ts
+3. Agent 3: Update the shared API client wrapper in src/api/client.ts,
+   update all tests, remove axios from package.json
+```
+
+Agents 1 and 2 work in parallel on independent files. Agent 3 waits for both to finish before updating the shared client and cleaning up.
+
+### Research and Implementation Split
+
+```
+Create a team to optimize the slow dashboard queries:
+1. Research agent (read-only): Analyze all database queries in
+   src/repositories/, identify N+1 queries, missing indexes, and
+   suboptimal joins. Write findings to OPTIMIZATION-PLAN.md
+2. Implementation agent (blocked by task 1): Apply the optimizations
+   identified in OPTIMIZATION-PLAN.md
+3. Verification agent (blocked by task 2): Run the benchmark suite
+   before and after, report performance improvements
+```
+
+The research agent uses an Explore subagent type (read-only) for safety. The implementation agent acts on confirmed findings, not guesses.
+
+### Handling Merge Conflicts Between Agents
+
+When multiple agents modify related files, conflicts can arise during merge. Strategies:
+
+- **Assign shared files to one agent.** If `src/routes/index.ts` needs updates from multiple features, assign it to one agent that handles all route registrations.
+- **Use thin interface files.** Each agent writes a self-contained module. A single agent adds the imports and wiring at the end.
+- **Let the lead resolve.** After all agents finish, ask the lead to merge worktrees and resolve any conflicts.
+
 ## Tips
 
 - **Keep tasks well-defined.** Each task should have clear inputs, outputs, and acceptance criteria.
@@ -104,6 +155,7 @@ Agent-1 starts on the shared foundation. Once Task 1 completes, agents 2 and 3 w
 - **Let the lead handle merging.** The team lead is best positioned to resolve conflicts between agent outputs.
 - **Use for big tasks only.** The overhead of team coordination is not worth it for tasks that take one agent under 10 minutes.
 - **Check task status regularly.** Agents should update their task status so the lead can track progress and unblock others.
+- **Scope shared-file edits carefully.** Assign files that multiple agents need to a single agent, or have one agent handle the integration pass after others finish.
 
 ## See Also
 

@@ -78,7 +78,7 @@ git log --oneline -20 | claude -p "summarize recent changes"
 
 ## CLI Flags
 
-Useful flags when launching Claude Code:
+### Essentials
 
 ```bash
 claude                          # Interactive mode (default)
@@ -86,6 +86,41 @@ claude -p "prompt"              # One-shot prompt, exit after response
 claude --model claude-opus-4-6  # Start with a specific model
 claude --verbose                # Show additional debug output
 claude --allowedTools "Edit,Read,Bash"  # Restrict available tools
+```
+
+### Session and Context
+
+```bash
+claude --resume                 # Resume the most recent conversation
+claude --resume <session-id>    # Resume a specific conversation
+claude --continue               # Continue the last conversation (alias for resume)
+claude -p "prompt" --output-format json   # Structured JSON output for scripting
+claude -p "prompt" --output-format stream-json  # Streaming JSON for real-time parsing
+```
+
+### Safety and Limits
+
+```bash
+claude --max-turns 10           # Limit agentic loop iterations
+claude --permission-mode plan   # Start in plan mode (read-only until approved)
+claude --dangerously-skip-permissions  # Skip all permission prompts (CI only)
+claude --no-mcp                 # Disable all MCP servers for this session
+```
+
+### Debugging and Diagnostics
+
+```bash
+claude --mcp-debug              # Verbose MCP protocol logging
+claude --verbose                # Extra debug output for all operations
+claude config list              # Show all current configuration values
+claude config set vim_mode true # Set a config value
+```
+
+### System Prompts and Context
+
+```bash
+claude -p "prompt" --system-prompt "You are a security auditor"  # Custom system prompt
+claude -p "prompt" --append-system-prompt "Always use TypeScript"  # Append to default system prompt
 ```
 
 ## Vim Mode
@@ -117,6 +152,32 @@ Alternatively, write your prompt in a file and pipe it:
 
 ```bash
 claude -p "$(cat my-prompt.txt)"
+```
+
+## More Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| **Tab** | Accept Claude's suggestion or autocomplete |
+| **Ctrl+D** | Exit Claude Code (same as typing `/exit`) |
+| **Ctrl+Z** | Undo the last file edit Claude made |
+| **Ctrl+R** | Search through prompt history |
+
+### macOS-Specific
+
+| Shortcut | Action |
+|----------|--------|
+| **Cmd+K** | Clear terminal (alternative to Ctrl+L) |
+
+### Customizing Keybindings
+
+You can customize key bindings in `~/.claude/keybindings.json`:
+
+```json
+{
+  "submit": "enter",
+  "newline": "shift+enter"
+}
 ```
 
 ## Useful Workflow Patterns

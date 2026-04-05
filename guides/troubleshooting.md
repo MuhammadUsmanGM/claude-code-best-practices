@@ -122,6 +122,80 @@ curl http://localhost:3000/health
 - Allow specific tools in your configuration if you trust them
 - Use "always allow" when prompted for tools you use frequently
 
+## Claude Ignores CLAUDE.md Instructions
+
+**Symptom:** Claude does not follow rules from CLAUDE.md, uses wrong conventions, or ignores "Do NOT" sections.
+
+**Fixes:**
+- Verify the `CLAUDE.md` file is in the project root (or the directory you launched Claude Code from)
+- Check for syntax issues -- CLAUDE.md must be valid Markdown
+- Keep instructions concise and specific. Vague rules like "write clean code" are ignored; "use named exports, not default exports" is followed
+- Place the most important rules at the top -- Claude weighs earlier content more heavily
+- If using a monorepo, ensure per-package `CLAUDE.md` files are in the correct directories
+- Run `/compact` -- a very long conversation may push CLAUDE.md context out of the active window
+
+## Claude Gets Stuck in a Loop
+
+**Symptom:** Claude repeatedly tries the same failing approach, runs the same command, or keeps editing and reverting the same file.
+
+**Fixes:**
+- Hit **Escape** immediately to interrupt
+- Redirect with a specific alternative: "Stop. Use approach X instead of Y"
+- Use `/compact` to clear confused context, then restate the task
+- If Claude keeps failing a test, provide the exact error message and ask it to analyze before fixing
+- Set `--max-turns` to limit how many iterations Claude can take
+
+## Git Operations Fail
+
+**Symptom:** Claude cannot commit, push, or interact with git.
+
+**Fixes:**
+- Check if you are in a git repository: `git status`
+- Verify git user config is set: `git config user.name` and `git config user.email`
+- Check if a rebase, merge, or cherry-pick is in progress: `git status` will show this
+- If Claude created a commit you did not want: `git log -3` to review, then ask Claude to help fix it
+- For permission issues on push: verify your SSH key or token is configured
+
+## Node.js / npm Issues
+
+**Symptom:** Claude's `npm` commands fail with dependency errors, `EACCES`, or version mismatches.
+
+**Fixes:**
+- Run `npm install` manually to ensure dependencies are up to date
+- Check Node.js version: Claude may assume a different version than what is installed
+- For `EACCES` errors: fix npm permissions rather than using `sudo`
+- If `npx` commands fail, try installing the package globally first
+
+## Large File or Binary Handling
+
+**Symptom:** Claude tries to read a binary file, chokes on a huge file, or the context fills up from a single read.
+
+**Fixes:**
+- Add large/binary files to `.claudeignore`
+- Ask Claude to read specific line ranges: "read lines 100-150 of src/bigfile.ts"
+- For generated files (bundle.js, compiled output), add them to `.claudeignore`
+- If context is full from a large read, run `/compact` or `/clear`
+
+## IDE Extension Issues
+
+**Symptom:** The VS Code or JetBrains extension does not connect, shows stale data, or behaves differently from the CLI.
+
+**Fixes:**
+- Ensure the CLI version and extension version are compatible -- update both
+- Restart the IDE after updating the extension
+- Check the extension output panel for error messages
+- Verify that the extension is using the same API key as the CLI
+
+## Session Recovery
+
+**Symptom:** You lost a conversation due to a crash, network drop, or accidental `/clear`.
+
+**Fixes:**
+- Use `claude --resume` to resume the most recent session
+- Use `claude --resume <session-id>` if you know the specific session
+- Check `~/.claude/` for session files if needed
+- Git history preserves all file changes Claude made, even if the session is lost
+
 ## Quick Diagnostic Checklist
 
 When something is not working:

@@ -1,6 +1,6 @@
 # Claude Code Best Practices
 
-> **Last updated:** April 5, 2026 · v1.2 · Covers Claude Code v1.x
+> **Last updated:** April 5, 2026 · v1.2 · Covers Claude Code v2.1.92
 
 A comprehensive guide to getting the most out of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's agentic coding tool that lives in your terminal.
 
@@ -101,6 +101,10 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [Next.js/Prisma](examples/claude-md-nextjs.md) | CLAUDE.md for a Next.js App Router + Prisma full-stack app |
 | [Go Microservice](examples/claude-md-go.md) | CLAUDE.md for a Go HTTP service with sqlc and Docker |
 | [Ruby on Rails](examples/claude-md-rails.md) | CLAUDE.md for a Rails 8 + Hotwire application |
+| [Rust](examples/claude-md-rust.md) | CLAUDE.md for a Rust Axum service with SQLx |
+| [Java/Spring Boot](examples/claude-md-spring-boot.md) | CLAUDE.md for a Spring Boot 3 REST API with JPA |
+| [Flutter/Dart](examples/claude-md-flutter.md) | CLAUDE.md for a Flutter mobile app with Riverpod |
+| [Django](examples/claude-md-django.md) | CLAUDE.md for a Django + DRF application with Celery |
 | [Minimal](examples/claude-md-minimal.md) | Minimal but effective CLAUDE.md |
 
 ### Toolbox
@@ -108,6 +112,8 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | Tool | Description |
 |------|-------------|
 | [CLAUDE.md Generator](tools/generate-claude-md.sh) | Interactive shell script that generates a CLAUDE.md in 60 seconds |
+| [CLAUDE.md Linter](tools/lint-claude-md.sh) | Validates CLAUDE.md structure, catches common mistakes and secrets |
+| [Cost Estimator](tools/estimate-cost.sh) | Estimates token usage and cost per task based on your codebase size |
 | [Quickstart Prompt](tools/quickstart-prompt.md) | Copy-paste prompt that makes Claude auto-generate a CLAUDE.md |
 
 ### Configuration References
