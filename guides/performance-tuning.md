@@ -49,23 +49,27 @@ Toggle fast mode with `/fast` in any session. Fast mode uses the same model but 
 
 Fast mode does not reduce quality — it uses the same Claude Opus 4.6 model with faster output generation.
 
-## The 1M Token Session Limit
+## The 1M Token Context Window (Opus 4.6)
 
-As of v2.1.92, Claude Code supports sessions up to **1 million tokens**. This means you can work through large features, multi-file refactors, and extended debugging sessions without hitting context limits. However, larger context does not mean free -- every token in the context window is sent with each new message, affecting both speed and cost.
+As of v2.1.92, **Opus 4.6 supports a 1M token context window** by default on Max, Team, and Enterprise plans (previously this required extra usage). Sonnet and Haiku have smaller context windows and will hit compression sooner.
 
-**Performance implications of the 1M limit:**
+With Opus, you can work through large features, multi-file refactors, and extended debugging sessions without hitting context limits. However, larger context does not mean free -- every token in the window is sent with each new message, affecting both speed and cost.
+
+**Performance implications at different context sizes (Opus):**
 - Sessions under 200K tokens feel fast and responsive
 - Sessions at 400K-600K tokens may start to feel noticeably slower
 - Sessions approaching 1M tokens work but cost significantly more per exchange
 - `/compact` remains your primary tool for keeping sessions lean and fast
 
+**For Sonnet and Haiku users:** Context management is more important since you will hit compression earlier. Use `/compact` more frequently and keep sessions focused.
+
 ## Context Management for Performance
 
-Long conversations slow Claude down and increase token costs. The 1M limit gives you room to breathe, but keeping sessions lean still improves speed:
+Long conversations slow Claude down and increase token costs. Opus's 1M limit gives you room to breathe, but keeping sessions lean still improves speed across all models:
 
 ### Use `/compact` Strategically
 
-The `/compact` command compresses your conversation history while preserving key context. With the 1M limit, you no longer need to compact to survive -- but compact to **stay fast**:
+The `/compact` command compresses your conversation history while preserving key context. With Opus's 1M window, you no longer need to compact to survive -- but compact to **stay fast**. On Sonnet and Haiku, compacting also prevents hitting the smaller context ceiling:
 
 - After finishing a subtask, before starting the next one
 - When context exceeds ~200K tokens and responses feel slower

@@ -32,7 +32,7 @@ echo $ANTHROPIC_API_KEY | head -c 10
 
 **Symptom:** "Context length exceeded" errors, or Claude seems to forget earlier parts of the conversation.
 
-As of v2.1.92, the session limit is **1 million tokens**, so hitting the ceiling is much less common. If you do hit it, or if Claude seems to forget earlier context (due to automatic compression):
+As of v2.1.92, **Opus 4.6 supports a 1M token context window** on Max, Team, and Enterprise plans, so hitting the ceiling is much less common when using Opus. Sonnet and Haiku have smaller windows and may hit this issue sooner. If you do hit it, or if Claude seems to forget earlier context (due to automatic compression):
 
 **Fixes:**
 - Run `/compact` immediately — this compresses history and frees space
@@ -46,7 +46,7 @@ As of v2.1.92, the session limit is **1 million tokens**, so hitting the ceiling
 "read src/bigfile.ts lines 200-250"
 ```
 
-**Note:** With 1M tokens, most sessions will never hit the limit. If you are regularly running out, you may be reading too many files or running too many commands in a single session. Consider using subagents for heavy exploration -- they run in their own context window.
+**Note:** With Opus on Max/Team/Enterprise, most sessions will never hit the 1M limit. If you are regularly running out, you may be reading too many files or running too many commands in a single session. Consider using subagents for heavy exploration -- they run in their own context window. If you are on Sonnet or Haiku, hitting context limits is more common -- use `/compact` proactively.
 
 ## MCP Connection Failures
 
