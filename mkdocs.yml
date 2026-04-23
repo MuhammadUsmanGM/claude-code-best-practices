@@ -5,7 +5,7 @@ repo_url: https://github.com/MuhammadUsmanGM/claude-code-best-practices
 repo_name: MuhammadUsmanGM/claude-code-best-practices
 edit_uri: edit/main/
 
-docs_dir: .
+docs_dir: docs
 site_dir: site
 
 theme:
@@ -82,7 +82,7 @@ extra:
       link: https://github.com/MuhammadUsmanGM/claude-code-best-practices
 
 nav:
-  - Home: README.md
+  - Home: index.md
   - Fundamentals:
       - Getting Started: guides/getting-started.md
       - CLAUDE.md Guide: guides/claude-md-guide.md
