@@ -1,26 +1,65 @@
 # Claude Code Best Practices
 
-> **Last updated:** April 23, 2026 · v1.4 · Covers Claude Code v2.1.92
+> **The community handbook for shipping real software with [Claude Code](https://docs.anthropic.com/en/docs/claude-code).**
+> Guides, working plugins, drop-in starter kits, published benchmarks, and a dogfooded `.claude/` setup you can copy.
 
+> **Last updated:** April 23, 2026 · **v1.4** · Covers Claude Code **v2.1.92** · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
+
+<!-- Project meta -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Awesome list](https://img.shields.io/badge/awesome-list-ff69b4.svg)](awesome.md)
+[![Made with Claude Code](https://img.shields.io/badge/made%20with-Claude%20Code-8b7cff.svg)](https://docs.anthropic.com/en/docs/claude-code)
+[![Conventional Commits](https://img.shields.io/badge/conventional%20commits-1.0.0-fa6673.svg)](https://www.conventionalcommits.org)
+[![Keep a Changelog](https://img.shields.io/badge/changelog-keep%20a%20changelog-f25d27.svg)](CHANGELOG.md)
+
+<!-- Content inventory -->
+[![Guides](https://img.shields.io/badge/guides-30%2B-0aa1dd.svg)](guides/)
+[![CLAUDE.md templates](https://img.shields.io/badge/CLAUDE.md%20templates-11-8e44ad.svg)](examples/)
+[![Starter kits](https://img.shields.io/badge/starter%20kits-3-2ea44f.svg)](starters/)
+[![Plugins](https://img.shields.io/badge/plugins-1-6f42c1.svg)](plugins/)
+[![Hook scripts](https://img.shields.io/badge/hooks-3-e67e22.svg)](tools/hooks/)
+[![Benchmarks](https://img.shields.io/badge/benchmarks-published-2c7a3d.svg)](guides/benchmarks.md)
+
+<!-- CI status -->
 [![shellcheck](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/shellcheck.yml)
 [![markdownlint](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/markdownlint.yml)
 [![links](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml)
 [![lint-claude-md](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml)
 [![docs](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/docs.yml/badge.svg)](https://MuhammadUsmanGM.github.io/claude-code-best-practices/)
-<!-- benchmarks badge omitted: workflow is manual-only (bring your own ANTHROPIC_API_KEY) -->
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Awesome](https://img.shields.io/badge/awesome-list-ff69b4.svg)](awesome.md)
 
-This repo dogfoods Claude Code on itself — see [CLAUDE.md](CLAUDE.md) and [.claude/](.claude/) for the wiring. **Browse the rendered site:** [MuhammadUsmanGM.github.io/claude-code-best-practices](https://MuhammadUsmanGM.github.io/claude-code-best-practices/).
+**Browse the rendered site:** [MuhammadUsmanGM.github.io/claude-code-best-practices](https://MuhammadUsmanGM.github.io/claude-code-best-practices/)
 
-A comprehensive guide to getting the most out of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's agentic coding tool that lives in your terminal.
+---
 
-Claude Code connects directly to your development environment, understands your codebase, and helps you write, debug, and ship code faster. This wiki covers everything from first-time setup to advanced workflows and real-world configuration examples.
+## Why this repo exists
 
-### See it in action
+Claude Code is powerful out of the box, but the gap between *"it works"* and *"it ships production code reliably"* is closed by a handful of patterns: a sharp `CLAUDE.md`, the right permission mode, hooks that catch mistakes before they reach disk, skills for repeat tasks, and a cost model you can reason about. Most of that knowledge is scattered across blog posts, Discord threads, and internal wikis.
 
-```
+This repo pulls it together into one place — **opinionated, tested, and dogfooded on itself.** Every convention here has been used to build the repo you're reading: the `.claude/` directory wires the hooks, the `/lint-docs` skill runs the same checks CI does, and the commit log is a working example of the Conventional Commits skill under `plugins/commit-helper/`.
+
+### What you'll find
+
+- **30+ guides** covering fundamentals, workflows, permissions, advanced architecture, cost management, and security.
+- **11 `CLAUDE.md` templates** for React, Python, Go, Rust, Rails, Django, Next.js, Spring Boot, Flutter, monorepos, and a minimal starter.
+- **3 starter kits** — whole-project drop-ins (`CLAUDE.md` + `.claude/` with settings, skills, and hooks) for React, Python, and Go.
+- **Working plugin** (`commit-helper`) with a Conventional Commits skill and a `PreToolUse` hook that blocks secrets before they're committed.
+- **Drop-in skills and hook scripts** — `/changelog`, `/pr-describe`, `/test-triage`, plus `block-secrets`, `format-on-write`, and `test-on-stop`.
+- **Published benchmarks** — model comparison, plan-mode on/off, CLAUDE.md payoff, and prompt-cache impact, with a reproducible harness so you can rerun them in your own repo.
+- **Security playbook** covering prompt injection, plugin supply chain, and team audit checklists.
+- **Dogfooded `.claude/` setup** you can copy — see [`CLAUDE.md`](CLAUDE.md) and [`.claude/`](./.claude/).
+
+### Who it's for
+
+- **Individual developers** setting up Claude Code for the first time and wanting to skip the "figuring it out" phase.
+- **Teams** standardizing how their engineers use Claude Code — shared configs, permission policies, and onboarding docs.
+- **Tooling authors** building plugins, skills, or hooks who want reference implementations to study.
+
+---
+
+## See it in action
+
+```text
 $ claude "Fix the failing test in src/utils/dates.test.ts"
 
  ● Reading src/utils/dates.test.ts...
@@ -34,16 +73,34 @@ $ claude "Fix the failing test in src/utils/dates.test.ts"
  One file changed, 3 lines added, 1 line removed.
 ```
 
-One prompt. Claude reads the code, finds the bug, fixes it, and verifies the tests pass.
+One prompt. Claude reads the code, finds the bug, fixes it, and verifies the tests pass. The guides in this repo are about getting to that kind of loop on your own codebase — reliably, cheaply, and without surprises.
 
 ## Quick Start
 
-1. **Install**: `npm install -g @anthropic-ai/claude-code`
-2. **Authenticate**: Run `claude` and follow the prompts to log in
-3. **Generate a CLAUDE.md**: Run `bash tools/generate-claude-md.sh` in your project, or use the [Quickstart Prompt](tools/quickstart-prompt.md) to have Claude generate one for you
-4. **Start coding**: Navigate to your project and run `claude`
+1. **Install:** `npm install -g @anthropic-ai/claude-code`
+2. **Authenticate:** run `claude` and follow the prompts to log in.
+3. **Drop in a starter kit** (recommended for new projects): `cp -r starters/<stack>/. /path/to/your/repo/`. See the [starters overview](starters/README.md).
+4. **Or generate a CLAUDE.md** for an existing project: `bash tools/generate-claude-md.sh`, or use the [Quickstart Prompt](tools/quickstart-prompt.md) to have Claude write one from your codebase.
+5. **Start coding:** run `claude` in your project.
 
-For detailed setup instructions, see the [Getting Started](guides/getting-started.md) guide.
+New to all of this? Read [Getting Started](guides/getting-started.md) → [CLAUDE.md Guide](guides/claude-md-guide.md) → [Workflow Patterns](guides/workflow-patterns.md) in that order. Each is ~10 minutes.
+
+## Repo map
+
+```text
+claude-code-best-practices/
+├── guides/          30+ guides — fundamentals, workflows, advanced, cost, security, reference
+├── examples/        CLAUDE.md templates (11 stacks) + drop-in skills + hook-script recipes
+├── starters/        Whole-project starter kits (React, Python, Go)
+├── plugins/         Working plugins — currently commit-helper
+├── tools/           Shell utilities — CLAUDE.md generator, linter, cost estimator, benchmark harness, hooks
+├── benchmarks/      Reproducible benchmark results and rolling summary
+├── .claude/         Dogfood — settings, skills, and hooks used on this repo itself
+├── .github/         CI workflows, issue and PR templates
+├── CLAUDE.md        The project instructions Claude Code reads when working on this repo
+├── CHANGELOG.md     Keep a Changelog format
+└── CONTRIBUTING.md  Style guide and PR process
+```
 
 ## Guides
 
@@ -168,8 +225,24 @@ Whole-project drop-in kits — `CLAUDE.md` + `.claude/` (settings, skills, hooks
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding new guides, style conventions, and the PR process. Each PR runs through five CI checks (shellcheck, markdownlint, link-check, lint-claude-md, docs build). A sixth workflow (benchmarks) is wired up but manual-only — it bills whoever runs it for API tokens.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for style conventions and the PR process. Every PR runs through five CI checks:
+
+| Check | What it catches |
+|-------|-----------------|
+| [shellcheck](.github/workflows/shellcheck.yml) | Shell bugs in any `.sh` under the repo |
+| [markdownlint](.github/workflows/markdownlint.yml) | Markdown structure issues (headings, lists, code fences) |
+| [links](.github/workflows/links.yml) | Broken internal and external links |
+| [lint-claude-md](.github/workflows/lint-claude-md.yml) | CLAUDE.md structure issues in every template |
+| [docs](.github/workflows/docs.yml) | mkdocs-material site build — catches broken nav and missing files |
+
+A sixth workflow ([benchmarks](.github/workflows/benchmarks.yml)) is wired up but **manual-only** — it calls the Anthropic API and bills whoever runs it for tokens. Trigger it with **Actions → benchmarks → Run workflow** on a fork with `ANTHROPIC_API_KEY` set as a repo secret.
+
+## Changelog and versioning
+
+- [`CHANGELOG.md`](CHANGELOG.md) follows [Keep a Changelog](https://keepachangelog.com/).
+- Versions are semver. Current release: **v1.4.0**.
+- Breaking changes to starter kits, plugins, or hook scripts bump the major version.
 
 ## License
 
-This project is licensed under the MIT License.
+MIT — see [LICENSE](LICENSE). Community-maintained; not affiliated with Anthropic.
