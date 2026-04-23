@@ -20,19 +20,19 @@ Later files take precedence, so directory-level instructions override project-le
 
 Claude follows explicit instructions more reliably than vague preferences:
 
-```markdown
+````markdown
 ## Code Style
 - Use early returns instead of nested if/else blocks
 - Maximum function length: 30 lines. Extract helpers for anything longer.
 - Name boolean variables with is/has/should prefixes
 - Never use `any` in TypeScript. Define proper types or use `unknown`.
-```
+````
 
 ### State What To Do, Not Just What to Avoid
 
 Positive instructions are clearer than negative ones:
 
-```markdown
+````markdown
 ## Good
 - Use Zod schemas for all API input validation
 - Write error messages that tell the user what to do next
@@ -40,13 +40,13 @@ Positive instructions are clearer than negative ones:
 ## Less Effective
 - Don't use manual validation
 - Don't write bad error messages
-```
+````
 
 ### Include Examples
 
 Short examples anchor abstract instructions:
 
-```markdown
+````markdown
 ## Commit Messages
 Format: <type>(<scope>): <description>
 
@@ -54,7 +54,7 @@ Examples:
 - feat(auth): add OAuth2 login with Google
 - fix(cart): prevent negative quantities on update
 - refactor(api): extract validation middleware
-```
+````
 
 ## Persona Patterns
 
@@ -62,7 +62,7 @@ Examples:
 
 Add this to your project CLAUDE.md when you want Claude to catch issues aggressively:
 
-```markdown
+````markdown
 ## Review Mode
 When reviewing code, be thorough and critical:
 - Flag any function without error handling
@@ -71,13 +71,13 @@ When reviewing code, be thorough and critical:
 - Check that every async function has proper error boundaries
 - Verify that database queries use parameterized inputs, never string concatenation
 - If a test is missing for new functionality, say so explicitly
-```
+````
 
 ### The Senior Architect
 
 For design discussions and technical planning:
 
-```markdown
+````markdown
 ## Architecture Mode
 When discussing design decisions:
 - Consider scalability implications for each approach
@@ -85,13 +85,13 @@ When discussing design decisions:
 - Reference existing patterns in this codebase before suggesting new ones
 - Suggest the simplest solution that meets current requirements
 - Flag when a decision will be hard to reverse later
-```
+````
 
 ### The Security Auditor
 
 For security-focused sessions:
 
-```markdown
+````markdown
 ## Security Review
 Analyze all code changes through a security lens:
 - Check for OWASP Top 10 vulnerabilities in every change
@@ -99,20 +99,20 @@ Analyze all code changes through a security lens:
 - Ensure authentication checks exist on all protected routes
 - Flag any secrets, tokens, or credentials in code — even in examples
 - Check that CORS, CSP, and rate limiting are properly configured
-```
+````
 
 ### The Documentation Writer
 
 When generating docs or comments:
 
-```markdown
+````markdown
 ## Documentation Style
 - Write JSDoc for all exported functions with @param, @returns, and @example
 - Use present tense in descriptions ("Returns the user" not "Will return the user")
 - Include one usage example per documented function
 - Keep descriptions under two sentences
 - Document why, not what — the code shows what it does
-```
+````
 
 ## Role Switching
 
@@ -140,7 +140,7 @@ project/
 
 Share persona configurations across your team by committing them to version control:
 
-```markdown
+````markdown
 # .claude/CLAUDE.md (committed to repo)
 
 ## Team Standards
@@ -148,24 +148,24 @@ Share persona configurations across your team by committing them to version cont
 - Use conventional commit format
 - API changes need updated OpenAPI specs
 - No console.log in production code — use the logger utility
-```
+````
 
 Individual developers can add personal preferences in their global config without affecting the team:
 
-```markdown
+````markdown
 # ~/.claude/CLAUDE.md (personal, not committed)
 
 ## My Preferences
 - Explain changes briefly after making them
 - Use verbose variable names
 - Show me the diff after edits
-```
+````
 
 ## Conditional Instructions
 
 Use section headers to scope instructions to specific contexts:
 
-```markdown
+````markdown
 ## When Writing Tests
 - Use describe/it blocks, not test() standalone
 - One assertion per test when possible
@@ -180,7 +180,7 @@ Use section headers to scope instructions to specific contexts:
 - Check for breaking changes in public APIs
 - Verify backward compatibility
 - Ensure migration steps are documented
-```
+````
 
 Claude applies the relevant section based on what you ask it to do.
 

@@ -163,14 +163,20 @@ HAS_CONTENT=false
 while IFS= read -r line; do
   if echo "$line" | grep -qE '^## '; then
     if $IN_SECTION && ! $HAS_CONTENT; then
-      warn "Empty section detected — remove or fill in: $line"
+      warn "Empty section detected — remove or fill in: $PREV_SECTION"
     fi
     IN_SECTION=true
     HAS_CONTENT=false
+    PREV_SECTION="$line"
   elif $IN_SECTION && [ -n "$line" ] && ! echo "$line" | grep -qE '^#'; then
     HAS_CONTENT=true
   fi
 done <<< "$CONTENT"
+
+# Check the last section
+if $IN_SECTION && ! $HAS_CONTENT; then
+  warn "Empty section detected — remove or fill in: $PREV_SECTION"
+fi
 
 echo ""
 

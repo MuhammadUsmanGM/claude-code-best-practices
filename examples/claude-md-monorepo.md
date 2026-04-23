@@ -25,7 +25,7 @@ acme-platform/
 
 ## Root CLAUDE.md
 
-```markdown
+````markdown
 # Acme Platform Monorepo
 
 Turborepo monorepo. Node.js 20, pnpm workspaces.
@@ -71,11 +71,11 @@ Turborepo monorepo. Node.js 20, pnpm workspaces.
 - Do not install dependencies in the root unless they are truly shared tooling
 - Do not import directly from another package's src/ — always use the package's public API
 - Do not create circular dependencies between packages
-```
+````
 
 ## packages/api/CLAUDE.md
 
-```markdown
+````markdown
 # @acme/api
 
 Express.js REST API. This CLAUDE.md supplements the root CLAUDE.md.
@@ -99,11 +99,11 @@ Express.js REST API. This CLAUDE.md supplements the root CLAUDE.md.
 - Validate request bodies with Zod schemas in `src/schemas/`
 - Use Prisma for all database access — no raw SQL
 - Database migrations: `pnpm --filter @acme/api prisma migrate dev`
-```
+````
 
 ## packages/web/CLAUDE.md
 
-```markdown
+````markdown
 # @acme/web
 
 Next.js 14 frontend with App Router.
@@ -127,11 +127,11 @@ Next.js 14 frontend with App Router.
 - Styles: Tailwind CSS utility classes, no CSS Modules
 - Data fetching: Server Components for initial data, TanStack Query for client-side
 - Images: always use next/image
-```
+````
 
 ## packages/shared/CLAUDE.md
 
-```markdown
+````markdown
 # @acme/shared
 
 Shared types, utilities, and constants. Imported by api, web, and cli.
@@ -153,7 +153,7 @@ Shared types, utilities, and constants. Imported by api, web, and cli.
 - Every export must be re-exported from `src/index.ts`
 - No runtime dependencies — this package should only export types and pure functions
 - 100% test coverage on utility functions
-```
+````
 
 ## How Nested CLAUDE.md Files Work
 

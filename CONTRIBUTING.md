@@ -75,9 +75,9 @@ Content here.
 
 ## See Also
 
-- [Related Guide](related-guide.md) -- Brief description of the relationship
-- [Another Guide](another-guide.md) -- Why this is relevant
-- [Third Guide](third-guide.md) -- Connection to this topic
+- [Getting Started](guides/getting-started.md) -- Initial setup and first run
+- [CLAUDE.md Guide](guides/claude-md-guide.md) -- Writing project instructions
+- [Prompt Tips](guides/prompt-tips.md) -- Communicating effectively with Claude
 ````
 
 ## Adding a New Example

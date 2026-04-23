@@ -98,7 +98,7 @@ def get_item(item_id: int, db: Session) -> Item:
 - Do not use `objects.raw()` or raw SQL — use the repository layer
 - Do not use `print()` — use the configured `logging` module
 - Do not use `*` imports
-``````
+````
 
 ## Key Sections Explained
 

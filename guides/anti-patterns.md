@@ -14,18 +14,18 @@ straight to it.
 
 **Bad**
 
-```markdown
+````markdown
 ## Guidelines
 
 - Write clean code.
 - Follow best practices.
 - Be careful with the database.
 - Make sure things work.
-```
+````
 
 **Fixed**
 
-```markdown
+````markdown
 ## Guidelines
 
 - Run `npm run lint` before committing; the CI gate rejects unformatted code.
@@ -34,7 +34,7 @@ straight to it.
   trivial; the staging DB replays migrations backwards nightly.
 - For any change under `src/billing/`, run `pytest tests/billing/ -x` before
   opening a PR.
-```
+````
 
 **Why:** "Clean code" is not an instruction, it's a mood. Claude reads the
 bad version and has no new information. The fixed version gives four concrete
@@ -47,7 +47,7 @@ actions and the *why* for each. The linter flags "write clean code" /
 
 **Bad**
 
-```markdown
+````markdown
 ## Architecture
 
 ## Testing
@@ -55,7 +55,7 @@ actions and the *why* for each. The linter flags "write clean code" /
 ## Deployment
 
 ## Gotchas
-```
+````
 
 **Why:** Empty headings waste the context budget — they're tokens that say
 nothing. Worse, they make the file look complete, which discourages future
@@ -70,12 +70,12 @@ real content beats a 200-line file with four empty stubs.
 
 **Bad**
 
-```markdown
+````markdown
 ## Model
 
 This project targets claude-3-opus for hard tasks and claude-3-haiku for
 boilerplate.
-```
+````
 
 **Why:** Model IDs rotate. Pinning a retired model means Claude can't run the
 instruction at all; pinning an old model means you miss capability
@@ -92,12 +92,12 @@ architecture reviews." See [Performance Tuning](performance-tuning.md).
 
 **Bad**
 
-```markdown
+````markdown
 ## Where things live
 
 - The API runs from `/home/alex/work/shopco/api/`.
 - Fixtures live in `/Users/alex/Desktop/test-data/`.
-```
+````
 
 **Why:** Teammates cloning the repo will read a fictitious map. Claude may
 generate commands that reference your home directory in PRs.
@@ -113,12 +113,12 @@ work for everyone. The linter warns on common absolute-path roots like
 **Bad** (illustrative only — real tokens look like this with ~40+ chars of
 random data after the prefix)
 
-```markdown
+````markdown
 ## Credentials
 
 The staging API key is a real `sk-ant-…` value pasted here. Use it when
 testing the `/generate` endpoint.
-```
+````
 
 **Why:** CLAUDE.md is checked into git. The moment a real key lands on a
 branch, it's leaked — rotating it is the only fix. The linter and the

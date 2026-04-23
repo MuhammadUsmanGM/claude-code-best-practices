@@ -58,10 +58,7 @@ markdown_extensions:
       toc_depth: 3
   - pymdownx.details
   - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
       pygments_lang_class: true
-      auto_title: false
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences:
@@ -158,5 +155,8 @@ nav:
       - commit-helper Skill: plugins/commit-helper/skills/conventional-commit/SKILL.md
   - Community: awesome.md
   - Project Config: CLAUDE.md
+  - Internal Config:
+      - GitHub Workflows: github_internal/workflows/index.md
+      - Claude Config: claude_internal/index.md
   - Contributing: CONTRIBUTING.md
   - Changelog: CHANGELOG.md

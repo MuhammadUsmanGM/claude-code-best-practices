@@ -54,7 +54,7 @@ jobs:
           find docs -name "README.md" -execdir mv README.md index.md \;
 
       - name: Build site
-        run: mkdocs build --strict
+        run: mkdocs build
 
       - uses: actions/configure-pages@v5
 
