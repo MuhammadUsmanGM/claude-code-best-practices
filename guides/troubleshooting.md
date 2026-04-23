@@ -186,6 +186,7 @@ curl http://localhost:3000/health
 **Symptom:** The VS Code or JetBrains extension does not connect, shows stale data, or behaves differently from the CLI.
 
 **Fixes:**
+
 - Ensure the CLI version and extension version are compatible -- update both
 - Restart the IDE after updating the extension
 - Check the extension output panel for error messages
@@ -196,6 +197,7 @@ curl http://localhost:3000/health
 **Symptom:** You lost a conversation due to a crash, network drop, or accidental `/clear`.
 
 **Fixes:**
+
 - Use `claude --resume` to resume the most recent session
 - Use `claude --resume <session-id>` if you know the specific session
 - Check `~/.claude/` for session files if needed

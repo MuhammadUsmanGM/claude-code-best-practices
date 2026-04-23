@@ -2,7 +2,7 @@
 
 > **The community handbook for shipping real software with [Claude Code](https://docs.anthropic.com/en/docs/claude-code).**
 > Guides, working plugins, drop-in starter kits, published benchmarks, and a dogfooded `.claude/` setup you can copy.
-
+>
 > **Last updated:** April 23, 2026 · **v1.4** · Covers Claude Code **v2.1.92** · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

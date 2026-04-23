@@ -23,7 +23,7 @@ and tools that pair well.
 ## Plugins
 
 - [commit-helper](plugins/commit-helper/) — this repo's reference plugin: Conventional Commits skill plus a secret-blocking `PreToolUse` hook.
-- _Add yours here._ Use the shape: `[name](url) — one-line summary.`
+- *Add yours here.* Use the shape: `[name](url) — one-line summary.`
 
 ## Skills
 
@@ -33,7 +33,7 @@ Drop-in `SKILL.md` files you can copy into `.claude/skills/`.
 - [pr-describe](examples/skills/pr-describe/SKILL.md) — draft PR title and body from the current branch.
 - [test-triage](examples/skills/test-triage/SKILL.md) — classify failing tests as flaky vs. real, propose a fix path per test.
 - [conventional-commit](plugins/commit-helper/skills/conventional-commit/SKILL.md) — Conventional Commits message from staged diff.
-- _Add yours here._
+- *Add yours here.*
 
 ## Starter kits
 
@@ -55,13 +55,13 @@ Per-stack examples under [`examples/`](examples/): Django, Flutter, Go, minimal,
 
 ## Essays and posts
 
-- _Add a link here when you find something worth keeping._ Please include a
+- *Add a link here when you find something worth keeping.* Please include a
   one-line hook that tells the reader *why* they should click — not just
   what the post is about.
 
 ## Talks and videos
 
-- _Add a link here when you find something worth keeping._ Prefer permalinks
+- *Add a link here when you find something worth keeping.* Prefer permalinks
   over YouTube search results; include approximate duration.
 
 ## Tooling that pairs well with Claude Code

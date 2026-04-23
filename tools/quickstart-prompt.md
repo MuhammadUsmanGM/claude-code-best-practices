@@ -2,7 +2,7 @@
 
 Copy and paste this prompt into Claude Code to auto-generate a CLAUDE.md for your project. No script needed — just run `claude` in your project directory and paste this:
 
-```
+```text
 Analyze this project and generate a CLAUDE.md file for it. Read package.json (or pyproject.toml, Cargo.toml, go.mod, etc.), the directory structure, and any existing config files (tsconfig, eslint, prettier, etc.).
 
 The CLAUDE.md should include:
@@ -26,6 +26,7 @@ Keep it concise — under 60 lines. Use bullet points, not paragraphs. Write com
 ## After Generating
 
 Review the output and adjust:
+
 - Remove anything inaccurate
 - Add team-specific rules Claude could not infer (PR process, deploy steps, etc.)
 - Commit the file so your whole team benefits

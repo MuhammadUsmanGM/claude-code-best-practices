@@ -14,7 +14,7 @@ A typical bug-fixing session follows a predictable flow: reproduce, locate, fix,
 
 ### Example session
 
-```
+```text
 > Here's the error from production: "TypeError: Cannot read property 'email' of undefined"
   in src/services/notification.ts:42. The user object is sometimes null when a
   guest checks out. Fix this so guests don't trigger email notifications.
@@ -50,7 +50,7 @@ Refactoring benefits from Claude's ability to make consistent changes across man
 
 ### Common refactoring tasks
 
-```
+```text
 # Extract a function
 "Extract the validation logic from handleSubmit into a validateOrder function"
 
@@ -77,12 +77,13 @@ When you don't know what's wrong, Claude can help investigate systematically.
 
 ### Diagnostic workflow
 
-```
+```text
 > The /api/orders endpoint returns a 500 error intermittently. Help me debug this.
   Here are the recent logs: [paste logs]
 ```
 
 Claude will typically:
+
 1. Analyze the logs for patterns
 2. Read the relevant code
 3. Identify potential causes
@@ -90,7 +91,7 @@ Claude will typically:
 
 ### Adding debug instrumentation
 
-```
+```text
 > Add logging to the order processing pipeline so we can trace where requests fail.
   Use our existing logger (src/lib/logger.ts). Don't change any business logic.
 ```
@@ -125,7 +126,7 @@ Claude excels at helping you understand unfamiliar code.
 
 ### Understanding a new codebase
 
-```
+```text
 > Give me a high-level overview of this project's architecture.
 > How does the authentication flow work end to end?
 > What happens when a user submits an order? Trace the request path.
@@ -133,7 +134,7 @@ Claude excels at helping you understand unfamiliar code.
 
 ### Investigating specific code
 
-```
+```text
 > Explain what src/middleware/rateLimit.ts does and why it's structured this way.
 > What are all the places where we interact with the payments API?
 ```
@@ -144,7 +145,7 @@ Claude can handle many Git operations directly.
 
 ### Common Git tasks
 
-```
+```text
 # Create a well-structured commit
 "Commit the current changes with a descriptive message"
 

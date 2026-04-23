@@ -23,7 +23,7 @@ claude /plugins
 
 Inside Claude, invoke the skill:
 
-```
+```text
 /conventional-commit
 ```
 
