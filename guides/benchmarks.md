@@ -4,7 +4,7 @@
 
 **How to read this page.** The numbers below are representative results from running `tools/benchmark.sh` against a fixed task set (see [Task set](#task-set)). Your numbers will differ — model pricing changes, codebases differ, prompt caching behaves differently under load. The **ratios** and **direction** of the results are what to trust; the absolute values are a reference point. Re-run the harness in your own repo with `bash tools/benchmark.sh` to get numbers that match your setup.
 
-**Living data.** A nightly CI job runs a reduced task set (T1, T2, T5) and commits results to [`benchmarks/history/`](../benchmarks/history/). The rolling summary — latest run plus 30-run trend — is regenerated into [`benchmarks/latest.md`](../benchmarks/latest.md) on every nightly run. The static tables below are the curated reference baseline; the living data is for tracking drift.
+**Living data (bring your own key).** The nightly CI job is wired up in [`.github/workflows/benchmarks.yml`](../.github/workflows/benchmarks.yml) but the cron trigger is commented out — running it bills the owner of `ANTHROPIC_API_KEY` for tokens, which this repo isn't currently funding. Anyone can trigger it manually via **Actions → benchmarks → Run workflow** on a fork with `ANTHROPIC_API_KEY` set as a repo secret, or uncomment the `schedule:` block to turn nightly back on. Results land in [`benchmarks/history/`](../benchmarks/history/) and the rolling summary regenerates into [`benchmarks/latest.md`](../benchmarks/latest.md). The static tables below are the curated reference baseline.
 
 **Last reference run:** 2026-04-22 · Claude Code v2.1.92 · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
 

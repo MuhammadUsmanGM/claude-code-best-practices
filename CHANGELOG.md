@@ -24,13 +24,16 @@ All notable changes to this project are documented here. Format loosely follows
   wire up mkdocs-material with search, nav mirroring the README sections, and
   a dark/light palette. Deployed via [`.github/workflows/docs.yml`](.github/workflows/docs.yml)
   to GitHub Pages on every push to `main`.
-- **Nightly benchmarks** — [`.github/workflows/benchmarks.yml`](.github/workflows/benchmarks.yml)
-  runs the harness on a daily cron, commits results to
-  [`benchmarks/history/YYYY-MM-DD.csv`](benchmarks/history/), and regenerates
+- **Benchmarks workflow (bring your own key)** —
+  [`.github/workflows/benchmarks.yml`](.github/workflows/benchmarks.yml) wires
+  up the harness to run in CI, commit CSVs to
+  [`benchmarks/history/YYYY-MM-DD.csv`](benchmarks/history/), and regenerate
   [`benchmarks/latest.md`](benchmarks/latest.md) via
-  [`tools/benchmark-summary.sh`](tools/benchmark-summary.sh) — turning the
-  static v1.3 tables into a living 30-run trend. The benchmarks guide now
-  links the latest summary.
+  [`tools/benchmark-summary.sh`](tools/benchmark-summary.sh). The nightly
+  cron is **commented out** — running the harness bills the owner of
+  `ANTHROPIC_API_KEY` for tokens, and this repo isn't funding that right now.
+  Manual `workflow_dispatch` still works; uncomment the `schedule:` block on
+  a fork with a key set to turn nightly on.
 - **CI quality gates** ([`.github/workflows/`](.github/workflows/)):
   - `shellcheck.yml` — shellcheck on every `.sh` on push/PR (fails on warnings).
   - `markdownlint.yml` — `markdownlint-cli` against all markdown with a shared

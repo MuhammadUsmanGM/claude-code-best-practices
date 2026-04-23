@@ -1,9 +1,14 @@
 name: benchmarks
 
 on:
-  schedule:
-    # Daily at 03:17 UTC — off the :00 / :30 marks to reduce fleet collisions.
-    - cron: '17 3 * * *'
+  # Nightly cron is intentionally disabled — running the harness bills the
+  # owner of ANTHROPIC_API_KEY for tokens, and we're not funding that right
+  # now. Re-enable by uncommenting the `schedule:` block below once a key is
+  # set as a repo secret. Manual runs via workflow_dispatch still work for
+  # anyone who sets the secret on their fork.
+  #
+  # schedule:
+  #   - cron: '17 3 * * *'
   workflow_dispatch:
     inputs:
       models:

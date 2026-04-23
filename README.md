@@ -7,7 +7,7 @@
 [![links](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml)
 [![lint-claude-md](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml)
 [![docs](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/docs.yml/badge.svg)](https://MuhammadUsmanGM.github.io/claude-code-best-practices/)
-[![benchmarks](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/benchmarks.yml/badge.svg)](benchmarks/latest.md)
+<!-- benchmarks badge omitted: workflow is manual-only (bring your own ANTHROPIC_API_KEY) -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Awesome](https://img.shields.io/badge/awesome-list-ff69b4.svg)](awesome.md)
@@ -168,7 +168,7 @@ Whole-project drop-in kits — `CLAUDE.md` + `.claude/` (settings, skills, hooks
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding new guides, style conventions, and the PR process. Each PR runs through six CI checks (shellcheck, markdownlint, link-check, lint-claude-md, docs build, benchmarks — last is nightly only).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding new guides, style conventions, and the PR process. Each PR runs through five CI checks (shellcheck, markdownlint, link-check, lint-claude-md, docs build). A sixth workflow (benchmarks) is wired up but manual-only — it bills whoever runs it for API tokens.
 
 ## License
 
