@@ -22,18 +22,18 @@ All discovered CLAUDE.md files are merged together, with more specific files tak
 
 Place personal preferences in `~/.claude/CLAUDE.md`:
 
-```markdown
+````markdown
 # My Preferences
 - Always use TypeScript strict mode
 - Prefer functional components in React
 - Use pnpm as the package manager
-```
+````
 
 ### Project Root CLAUDE.md
 
 This is the most common location. Commit it to your repo so the whole team benefits:
 
-```markdown
+````markdown
 # Project: Acme Dashboard
 
 ## Tech Stack
@@ -52,7 +52,7 @@ This is the most common location. Commit it to your repo so the whole team benef
 - Place API routes in `app/api/`
 - Use Zod for all input validation
 - All database changes require a migration: `pnpm prisma migrate dev`
-```
+````
 
 ### Nested CLAUDE.md
 
@@ -104,7 +104,7 @@ repo/
 
 A well-organized CLAUDE.md follows this pattern:
 
-```markdown
+````markdown
 # Project Name
 
 Brief one-line description.
@@ -123,7 +123,7 @@ Brief one-line description.
 
 ## Common Pitfalls
 - (list known gotchas)
-```
+````
 
 For complete real-world examples, see the [Examples](../README.md) section in the main README.
 

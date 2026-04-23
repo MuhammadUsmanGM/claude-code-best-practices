@@ -116,20 +116,45 @@ nav:
       - Benchmarks: guides/benchmarks.md
       - Git Workflow: guides/git-workflow.md
       - Tips & Tricks: guides/tips-and-tricks.md
+      - Decision Trees: guides/decision-trees.md
   - Reference:
       - Troubleshooting: guides/troubleshooting.md
       - Common Mistakes: guides/common-mistakes.md
       - Anti-Patterns Gallery: guides/anti-patterns.md
   - Starters:
-      - Overview: starters/README.md
+      - Overview: starters/index.md
       - React: starters/react/CLAUDE.md
       - Python: starters/python/CLAUDE.md
       - Go: starters/go/CLAUDE.md
   - Examples:
-      - Skills: examples/skills/README.md
+      - Skills: examples/skills/index.md
       - Hook Scripts: examples/hook-scripts.md
       - MCP Configs: examples/mcp-configs.md
+      - Reference Skills:
+          - Changelog: examples/skills/changelog/SKILL.md
+          - PR Describe: examples/skills/pr-describe/SKILL.md
+          - Test Triage: examples/skills/test-triage/SKILL.md
+      - CLAUDE.md Templates:
+          - Minimal: examples/claude-md-minimal.md
+          - React: examples/claude-md-react.md
+          - Python: examples/claude-md-python.md
+          - Next.js: examples/claude-md-nextjs.md
+          - Go: examples/claude-md-go.md
+          - Rust: examples/claude-md-rust.md
+          - Django: examples/claude-md-django.md
+          - Rails: examples/claude-md-rails.md
+          - Spring Boot: examples/claude-md-spring-boot.md
+          - Flutter: examples/claude-md-flutter.md
+          - Monorepo: examples/claude-md-monorepo.md
+  - Toolbox:
+      - Quickstart Prompt: tools/quickstart-prompt.md
+      - Hook Recipes: tools/hooks/index.md
+  - Benchmarks:
+      - Summary: guides/benchmarks.md
+      - Latest Run: benchmarks/latest.md
   - Plugins:
-      - commit-helper: plugins/commit-helper/README.md
+      - commit-helper: plugins/commit-helper/index.md
+      - commit-helper Skill: plugins/commit-helper/skills/conventional-commit/SKILL.md
+  - Community: awesome.md
   - Contributing: CONTRIBUTING.md
   - Changelog: CHANGELOG.md

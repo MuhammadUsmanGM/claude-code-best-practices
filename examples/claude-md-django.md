@@ -4,7 +4,7 @@ This example shows a CLAUDE.md for a Django web application using Django REST Fr
 
 ## The CLAUDE.md File
 
-```markdown
+````markdown
 # Project: Acme Marketplace
 
 Django 5.1 + Django REST Framework 3.15. Python 3.12+. PostgreSQL database, Redis for caching and Celery broker.
@@ -172,7 +172,7 @@ def send_order_confirmation(self, order_id: int) -> None:
 - Do not use `print()` — use Django's `logging` module
 - Do not use `*` imports
 - Do not modify migration files after they have been applied
-```
+````
 
 ## Key Sections Explained
 

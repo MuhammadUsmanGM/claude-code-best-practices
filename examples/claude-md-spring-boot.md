@@ -4,7 +4,7 @@ This example shows a CLAUDE.md for a Java backend service using Spring Boot 3, S
 
 ## The CLAUDE.md File
 
-```markdown
+````markdown
 # Project: Acme Customer API
 
 Java 21 + Spring Boot 3.3 REST API. Gradle build system. PostgreSQL database with Spring Data JPA.
@@ -149,7 +149,7 @@ Global exception handler in `exception/GlobalExceptionHandler.java`:
 - Do not catch `Exception` or `RuntimeException` in service code — let the global handler deal with it
 - Do not use `System.out.println` — use SLF4J logging (`@Slf4j`)
 - Do not write business logic in controllers — delegate to the service layer
-```
+````
 
 ## Key Sections Explained
 

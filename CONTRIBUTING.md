@@ -60,7 +60,7 @@ All internal links use relative paths. Never use absolute URLs for links between
 
 ### New guide template
 
-```markdown
+````markdown
 # Guide Title
 
 Brief introduction to the topic (1-2 sentences).
@@ -78,7 +78,7 @@ Content here.
 - [Related Guide](related-guide.md) -- Brief description of the relationship
 - [Another Guide](another-guide.md) -- Why this is relevant
 - [Third Guide](third-guide.md) -- Connection to this topic
-```
+````
 
 ## Adding a New Example
 

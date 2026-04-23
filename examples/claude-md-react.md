@@ -4,7 +4,7 @@ This example shows a complete CLAUDE.md for a React application built with TypeS
 
 ## The CLAUDE.md File
 
-```markdown
+````markdown
 # Project: Acme Dashboard
 
 React 19 + TypeScript 5.x single-page application. Vite build system.

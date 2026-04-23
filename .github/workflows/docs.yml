@@ -38,17 +38,15 @@ jobs:
 
       - name: Prepare docs directory
         run: |
-          mkdir docs
-          cp README.md docs/index.md
-          cp CONTRIBUTING.md docs/CONTRIBUTING.md
-          cp CHANGELOG.md docs/CHANGELOG.md
-          cp awesome.md docs/awesome.md
-          cp -r guides docs/
-          cp -r examples docs/
-          cp -r starters docs/
-          cp -r plugins docs/
-          cp -r tools docs/
-          cp -r benchmarks docs/
+          mkdir -p docs
+          # Copy everything to docs/ to satisfy relative links (LICENSE, etc.)
+          cp -r . docs/ || true
+          # Clean up to avoid infinite recursion and unwanted files
+          rm -rf docs/docs docs/site docs/.git docs/.github
+          # Update internal links from README.md to index.md before renaming the files
+          find docs -name "*.md" -exec sed -i 's/README\.md/index.md/g' {} +
+          # Recursively rename README.md to index.md to satisfy MkDocs directory links
+          find docs -name "README.md" -execdir mv README.md index.md \;
 
       - name: Build site
         run: mkdocs build --strict

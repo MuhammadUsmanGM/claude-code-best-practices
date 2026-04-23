@@ -4,7 +4,7 @@ This example shows a complete CLAUDE.md for a Python backend service using FastA
 
 ## The CLAUDE.md File
 
-```markdown
+````markdown
 # Project: Inventory API
 
 FastAPI backend service for inventory management. Python 3.12+.
@@ -95,10 +95,10 @@ def get_item(item_id: int, db: Session) -> Item:
 ## Do NOT
 
 - Do not use `import *`
-- Do not use mutable default arguments
-- Do not add print() statements for debugging — use the logging module
-- Do not write raw SQL in routers — use the repository layer
-```
+- Do not use `objects.raw()` or raw SQL — use the repository layer
+- Do not use `print()` — use the configured `logging` module
+- Do not use `*` imports
+``````
 
 ## Key Sections Explained
 
