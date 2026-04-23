@@ -5,28 +5,11 @@
 
 > **Last updated:** April 23, 2026 · **v1.4** · Covers Claude Code **v2.1.92** · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
 
-<!-- Project meta -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Awesome list](https://img.shields.io/badge/awesome-list-ff69b4.svg)](awesome.md)
 [![Made with Claude Code](https://img.shields.io/badge/made%20with-Claude%20Code-8b7cff.svg)](https://docs.anthropic.com/en/docs/claude-code)
 [![Conventional Commits](https://img.shields.io/badge/conventional%20commits-1.0.0-fa6673.svg)](https://www.conventionalcommits.org)
-[![Keep a Changelog](https://img.shields.io/badge/changelog-keep%20a%20changelog-f25d27.svg)](CHANGELOG.md)
-
-<!-- Content inventory -->
-[![Guides](https://img.shields.io/badge/guides-30%2B-0aa1dd.svg)](guides/)
-[![CLAUDE.md templates](https://img.shields.io/badge/CLAUDE.md%20templates-11-8e44ad.svg)](examples/)
-[![Starter kits](https://img.shields.io/badge/starter%20kits-3-2ea44f.svg)](starters/)
-[![Plugins](https://img.shields.io/badge/plugins-1-6f42c1.svg)](plugins/)
-[![Hook scripts](https://img.shields.io/badge/hooks-3-e67e22.svg)](tools/hooks/)
-[![Benchmarks](https://img.shields.io/badge/benchmarks-published-2c7a3d.svg)](guides/benchmarks.md)
-
-<!-- CI status -->
-[![shellcheck](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/shellcheck.yml)
-[![markdownlint](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/markdownlint.yml)
-[![links](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml)
-[![lint-claude-md](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml)
-[![docs](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/docs.yml/badge.svg)](https://MuhammadUsmanGM.github.io/claude-code-best-practices/)
+[![Awesome list](https://img.shields.io/badge/awesome-list-ff69b4.svg)](awesome.md)
 
 **Browse the rendered site:** [MuhammadUsmanGM.github.io/claude-code-best-practices](https://MuhammadUsmanGM.github.io/claude-code-best-practices/)
 
