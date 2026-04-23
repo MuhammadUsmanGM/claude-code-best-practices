@@ -21,7 +21,7 @@ if [ -t 1 ]; then
   YELLOW="\033[33m"
   RESET="\033[0m"
 else
-  BOLD="" DIM="" CYAN="" GREEN="" YELLOW="" RESET=""
+  BOLD="" DIM="" CYAN="" YELLOW="" RESET=""
 fi
 
 PROJECT_DIR="${1:-.}"

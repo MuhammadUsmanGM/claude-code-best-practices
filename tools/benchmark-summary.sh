@@ -38,7 +38,7 @@ EOF
 fi
 
 # Sort by filename (YYYY-MM-DD.csv) so "last" is the most recent.
-IFS=$'\n' sorted=($(printf '%s\n' "${csvs[@]}" | sort))
+mapfile -t sorted < <(printf '%s\n' "${csvs[@]}" | sort)
 latest_csv="${sorted[-1]}"
 latest_date="$(basename "$latest_csv" .csv)"
 

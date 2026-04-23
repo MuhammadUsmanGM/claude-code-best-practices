@@ -156,8 +156,6 @@ else
 fi
 
 # Check for empty sections
-EMPTY_SECTIONS=$(echo "$CONTENT" | grep -cE '^## ' || true)
-SECTIONS_WITH_CONTENT=0
 IN_SECTION=false
 HAS_CONTENT=false
 while IFS= read -r line; do

@@ -52,6 +52,11 @@ jobs:
           find docs -name "*.md" -exec sed -i 's/\.claude/claude_internal/g' {} +
           # Recursively rename README.md to index.md for canonical MkDocs structure
           find docs -name "README.md" -execdir mv README.md index.md \;
+          # Create index files for folders that don't have them but are in the nav
+          mkdir -p docs/github_internal/workflows
+          echo "# GitHub Workflows" > docs/github_internal/workflows/index.md
+          mkdir -p docs/claude_internal/skills
+          echo "# Claude Skills" > docs/claude_internal/skills/index.md
 
       - name: Build site
         run: mkdocs build
