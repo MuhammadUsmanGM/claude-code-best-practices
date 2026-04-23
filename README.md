@@ -1,6 +1,6 @@
 # Claude Code Best Practices
 
-> **Last updated:** April 5, 2026 · v1.2 · Covers Claude Code v2.1.92
+> **Last updated:** April 23, 2026 · v1.3 · Covers Claude Code v2.1.92
 
 A comprehensive guide to getting the most out of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's agentic coding tool that lives in your terminal.
 
@@ -79,6 +79,7 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 |-------|-------------|
 | [Performance Tuning](guides/performance-tuning.md) | Model selection, fast mode, and optimizing speed and cost |
 | [Cost Management](guides/cost-management.md) | Monitoring usage, reducing token consumption, and budgeting |
+| [Benchmarks](guides/benchmarks.md) | **New in v1.3.** Published numbers: model comparison, plan mode on/off, CLAUDE.md payoff, cache impact |
 | [Git Workflow](guides/git-workflow.md) | Commits, PRs, branch management with Claude Code |
 | [Tips and Tricks](guides/tips-and-tricks.md) | Keyboard shortcuts, slash commands, headless mode, CLI flags |
 
@@ -114,7 +115,16 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [CLAUDE.md Generator](tools/generate-claude-md.sh) | Interactive shell script that generates a CLAUDE.md in 60 seconds |
 | [CLAUDE.md Linter](tools/lint-claude-md.sh) | Validates CLAUDE.md structure, catches common mistakes and secrets |
 | [Cost Estimator](tools/estimate-cost.sh) | Estimates token usage and cost per task based on your codebase size |
+| [Benchmark Harness](tools/benchmark.sh) | **New in v1.3.** Reproducible headless harness — run the benchmarks in your own repo |
+| [Hook Scripts](tools/hooks/README.md) | **New in v1.3.** Drop-in `block-secrets`, `format-on-write`, `test-on-stop` |
 | [Quickstart Prompt](tools/quickstart-prompt.md) | Copy-paste prompt that makes Claude auto-generate a CLAUDE.md |
+
+### Plugins and Skills
+
+| Item | Description |
+|------|-------------|
+| [commit-helper plugin](plugins/commit-helper/README.md) | **New in v1.3.** Working plugin: Conventional Commits skill + secret-blocking hook |
+| [Example Skills](examples/skills/README.md) | **New in v1.3.** Drop-in `/changelog`, `/pr-describe`, `/test-triage` |
 
 ### Configuration References
 

@@ -1,0 +1,21 @@
+{
+  "name": "commit-helper",
+  "version": "1.0.0",
+  "description": "Conventional-commit skill + pre-commit guard for secrets. Drop-in plugin for Claude Code.",
+  "author": "claude-code-best-practices",
+  "license": "MIT",
+  "claudeCode": {
+    "minVersion": "2.1.0"
+  },
+  "skills": [
+    "skills/conventional-commit/SKILL.md"
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "command": "bash ${CLAUDE_PLUGIN_DIR}/hooks/block-secret-commits.sh"
+      }
+    ]
+  }
+}
