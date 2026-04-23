@@ -13,7 +13,7 @@ fi
 cmd=""
 if [ -f package.json ] && grep -q '"test"' package.json 2>/dev/null; then
   cmd="npm test --silent"
-elif [ -f pyproject.toml ] || [ -f pytest.ini ] || [ -f setup.cfg ] && command -v pytest >/dev/null 2>&1; then
+elif { [ -f pyproject.toml ] || [ -f pytest.ini ] || [ -f setup.cfg ]; } && command -v pytest >/dev/null 2>&1; then
   cmd="pytest -q"
 elif [ -f go.mod ]; then
   cmd="go test ./..."

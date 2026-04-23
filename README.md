@@ -1,6 +1,13 @@
 # Claude Code Best Practices
 
-> **Last updated:** April 23, 2026 · v1.3 · Covers Claude Code v2.1.92
+> **Last updated:** April 23, 2026 · v1.4 · Covers Claude Code v2.1.92
+
+[![shellcheck](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/shellcheck.yml)
+[![markdownlint](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/markdownlint.yml)
+[![links](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml)
+[![lint-claude-md](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml)
+
+This repo dogfoods Claude Code on itself — see [CLAUDE.md](CLAUDE.md) and [.claude/](.claude/) for the wiring.
 
 A comprehensive guide to getting the most out of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's agentic coding tool that lives in your terminal.
 
@@ -89,6 +96,7 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 |-------|-------------|
 | [Troubleshooting](guides/troubleshooting.md) | Common issues and how to resolve them |
 | [Common Mistakes](guides/common-mistakes.md) | Anti-patterns to avoid |
+| [Anti-Patterns Gallery](guides/anti-patterns.md) | **New in v1.4.** Annotated bad/fixed pairs: CLAUDE.md, hooks, prompts |
 
 ## Examples
 

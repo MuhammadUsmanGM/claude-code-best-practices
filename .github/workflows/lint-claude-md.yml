@@ -1,0 +1,48 @@
+name: lint-claude-md
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'examples/claude-md-*.md'
+      - 'CLAUDE.md'
+      - 'tools/lint-claude-md.sh'
+      - '.github/workflows/lint-claude-md.yml'
+  pull_request:
+    paths:
+      - 'examples/claude-md-*.md'
+      - 'CLAUDE.md'
+      - 'tools/lint-claude-md.sh'
+      - '.github/workflows/lint-claude-md.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint every CLAUDE.md template
+        run: |
+          set -uo pipefail
+          status=0
+          # Include the repo's own CLAUDE.md and every example template.
+          files=(CLAUDE.md)
+          while IFS= read -r f; do files+=("$f"); done < <(find examples -name 'claude-md-*.md' | sort)
+
+          for f in "${files[@]}"; do
+            echo "::group::$f"
+            set +e
+            bash tools/lint-claude-md.sh "$f"
+            rc=$?
+            set -e
+            echo "::endgroup::"
+            # Exit 2 = errors (fail CI). Exit 1 = warnings only (allow).
+            if [ "$rc" -ge 2 ]; then
+              echo "::error file=$f::lint-claude-md reported errors"
+              status=1
+            fi
+          done
+          exit $status

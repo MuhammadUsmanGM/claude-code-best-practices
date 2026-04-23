@@ -26,7 +26,7 @@ esac
 
 check() {
   local pattern="$1" label="$2"
-  if printf '%s' "$content" | grep -Eq "$pattern"; then
+  if printf '%s' "$content" | grep -Eq -- "$pattern"; then
     violations+=("$label")
   fi
 }

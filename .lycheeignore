@@ -1,0 +1,14 @@
+# Skip these URL patterns when checking links.
+# Rationale: these are placeholders or rate-limited endpoints that fail the
+# checker without indicating real rot.
+
+# Example "your-fork" placeholder used in install one-liners.
+https://raw.githubusercontent.com/<your-fork>/.*
+
+# Local-only hostnames referenced in examples.
+^https?://grafana\.internal/.*
+^https?://localhost(:\d+)?/.*
+^https?://127\.0\.0\.1.*
+
+# Anthropic API endpoints — not meant to be fetched by the checker.
+^https?://api\.anthropic\.com/.*

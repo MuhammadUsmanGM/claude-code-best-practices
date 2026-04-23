@@ -4,10 +4,10 @@
 set -euo pipefail
 
 input="$(cat)"
-command="$(printf '%s' "$input" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\(.*\)".*/\1/p' | head -1)"
+bash_cmd="$(printf '%s' "$input" | sed -n 's/.*"command"[[:space:]]*:[[:space:]]*"\(.*\)".*/\1/p' | head -1)"
 
 # Only guard `git commit` invocations.
-case "$command" in
+case "$bash_cmd" in
   *"git commit"*) ;;
   *) exit 0 ;;
 esac
@@ -34,7 +34,7 @@ done <<< "$staged"
 diff_content="$(git diff --cached -U0 2>/dev/null || true)"
 check_pattern() {
   local pattern="$1" label="$2"
-  if printf '%s' "$diff_content" | grep -Eq "$pattern"; then
+  if printf '%s' "$diff_content" | grep -Eq -- "$pattern"; then
     violations+=("$label")
   fi
 }

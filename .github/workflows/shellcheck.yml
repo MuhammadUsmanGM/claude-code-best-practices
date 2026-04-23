@@ -1,0 +1,38 @@
+name: shellcheck
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.sh'
+      - '.github/workflows/shellcheck.yml'
+  pull_request:
+    paths:
+      - '**/*.sh'
+      - '.github/workflows/shellcheck.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: Run shellcheck
+        run: |
+          set -euo pipefail
+          # Exclude .git and any vendor dirs. Fail on any warning.
+          mapfile -d '' files < <(find . -name '*.sh' -not -path './.git/*' -print0)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No shell scripts found."
+            exit 0
+          fi
+          printf '%s\n' "${files[@]}"
+          shellcheck --severity=warning "${files[@]}"
