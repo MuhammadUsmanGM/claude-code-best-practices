@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and general discussion
+    url: https://github.com/MuhammadUsmanGM/claude-code-best-practices/discussions
+    about: For open-ended questions, ideas, or show-and-tell. Please use Discussions instead of Issues.
+  - name: Official Claude Code docs
+    url: https://docs.anthropic.com/en/docs/claude-code
+    about: Upstream documentation for Claude Code itself (this repo is a community wiki).
+  - name: Claude Code issue tracker
+    url: https://github.com/anthropics/claude-code/issues
+    about: For bugs in Claude Code the product — not in this repo's guides.

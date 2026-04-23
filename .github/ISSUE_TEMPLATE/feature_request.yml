@@ -1,0 +1,54 @@
+name: Tool or workflow request
+description: Suggest a new tool, hook script, skill, plugin, starter kit, or CI improvement.
+title: "[feat] <short description>"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Open-ended ideas belong in [Discussions](https://github.com/MuhammadUsmanGM/claude-code-best-practices/discussions).
+        Use this template when you have a specific, concrete addition in mind.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the pain point. Focus on the user and the workflow, not the implementation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed addition
+      description: What specifically would you add — a hook script? A skill? A starter kit? Name the files and where they'd live.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Hook script
+        - Skill
+        - Plugin
+        - Starter kit
+        - Tool (tools/*.sh)
+        - CI workflow
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Existing tools or approaches that don't quite fit, and why.
+
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Would you open the PR?
+      options:
+        - label: I'm willing to submit the PR for this.

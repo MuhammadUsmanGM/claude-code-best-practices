@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img" aria-label="Claude Code Best Practices">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1d29"/>
+      <stop offset="1" stop-color="#0f1117"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8b7cff"/>
+      <stop offset="1" stop-color="#5d4ce0"/>
+    </linearGradient>
+    <style>
+      .title   { font: 700 84px "Inter", "Segoe UI", system-ui, sans-serif; fill: #f5f7fb; letter-spacing: -1px; }
+      .tag     { font: 500 36px "Inter", "Segoe UI", system-ui, sans-serif; fill: #b9bdd0; }
+      .mono    { font: 500 22px "JetBrains Mono", "Menlo", "Consolas", monospace; fill: #8b8fa8; }
+      .chip    { font: 600 22px "Inter", system-ui, sans-serif; fill: #f5f7fb; }
+      .chiprect { fill: #262a3a; stroke: #3a3f55; stroke-width: 1.5; rx: 10; ry: 10; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <!-- top accent bar -->
+  <rect x="0" y="0" width="1280" height="6" fill="url(#accent)"/>
+
+  <!-- prompt glyph -->
+  <g transform="translate(90 150)">
+    <rect x="0" y="0" width="80" height="80" rx="14" fill="#262a3a" stroke="#3a3f55" stroke-width="1.5"/>
+    <text x="40" y="58" text-anchor="middle" class="chip" font-size="38" font-family="'JetBrains Mono', monospace" fill="#8b7cff">&gt;_</text>
+  </g>
+
+  <!-- title -->
+  <text x="200" y="200" class="title">Claude Code</text>
+  <text x="200" y="300" class="title" fill="url(#accent)">Best Practices</text>
+
+  <!-- tagline -->
+  <text x="90" y="380" class="tag">A community wiki for shipping with Claude Code.</text>
+  <text x="90" y="428" class="tag">Guides, starters, plugins, and published benchmarks.</text>
+
+  <!-- chips -->
+  <g transform="translate(90 480)">
+    <rect class="chiprect" x="0"   y="0" width="180" height="50"/>
+    <text x="90" y="33" text-anchor="middle" class="chip">CLAUDE.md</text>
+
+    <rect class="chiprect" x="200" y="0" width="150" height="50"/>
+    <text x="275" y="33" text-anchor="middle" class="chip">hooks</text>
+
+    <rect class="chiprect" x="370" y="0" width="150" height="50"/>
+    <text x="445" y="33" text-anchor="middle" class="chip">skills</text>
+
+    <rect class="chiprect" x="540" y="0" width="170" height="50"/>
+    <text x="625" y="33" text-anchor="middle" class="chip">plugins</text>
+
+    <rect class="chiprect" x="730" y="0" width="210" height="50"/>
+    <text x="835" y="33" text-anchor="middle" class="chip">benchmarks</text>
+  </g>
+
+  <!-- footer repo handle -->
+  <text x="90" y="600" class="mono">github.com / MuhammadUsmanGM / claude-code-best-practices</text>
+</svg>

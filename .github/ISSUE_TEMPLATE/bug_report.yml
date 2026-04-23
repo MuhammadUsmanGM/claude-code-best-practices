@@ -1,0 +1,51 @@
+name: Bug report
+description: Something in this repo is wrong — a guide is inaccurate, a tool is broken, a link is dead, or a CI gate behaves unexpectedly.
+title: "[bug] <short description>"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. Please fill in the fields below so we can reproduce and fix quickly.
+        For questions or ideas, use [Discussions](https://github.com/MuhammadUsmanGM/claude-code-best-practices/discussions).
+
+  - type: input
+    id: location
+    attributes:
+      label: Where is the problem?
+      description: File path (e.g. `guides/hooks.md`) or tool (e.g. `tools/benchmark.sh`).
+      placeholder: "guides/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What's wrong?
+      description: What does the current text/tool say or do that's incorrect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: What should it say or do instead? If you already know the fix, link to the line or paste the suggested text.
+    validations:
+      required: true
+
+  - type: input
+    id: claude-code-version
+    attributes:
+      label: Claude Code version (if relevant)
+      placeholder: "v2.1.92"
+
+  - type: checkboxes
+    id: check
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked that a similar issue is not already open.
+          required: true
+        - label: This is about *this wiki*, not Claude Code itself. (Product bugs go to the [Claude Code tracker](https://github.com/anthropics/claude-code/issues).)
+          required: true

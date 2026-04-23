@@ -6,8 +6,13 @@
 [![markdownlint](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/markdownlint.yml)
 [![links](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/links.yml)
 [![lint-claude-md](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml/badge.svg)](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/lint-claude-md.yml)
+[![docs](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/docs.yml/badge.svg)](https://MuhammadUsmanGM.github.io/claude-code-best-practices/)
+[![benchmarks](https://github.com/MuhammadUsmanGM/claude-code-best-practices/actions/workflows/benchmarks.yml/badge.svg)](benchmarks/latest.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Awesome](https://img.shields.io/badge/awesome-list-ff69b4.svg)](awesome.md)
 
-This repo dogfoods Claude Code on itself — see [CLAUDE.md](CLAUDE.md) and [.claude/](.claude/) for the wiring.
+This repo dogfoods Claude Code on itself — see [CLAUDE.md](CLAUDE.md) and [.claude/](.claude/) for the wiring. **Browse the rendered site:** [MuhammadUsmanGM.github.io/claude-code-best-practices](https://MuhammadUsmanGM.github.io/claude-code-best-practices/).
 
 A comprehensive guide to getting the most out of [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Anthropic's agentic coding tool that lives in your terminal.
 
@@ -87,6 +92,7 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [Performance Tuning](guides/performance-tuning.md) | Model selection, fast mode, and optimizing speed and cost |
 | [Cost Management](guides/cost-management.md) | Monitoring usage, reducing token consumption, and budgeting |
 | [Benchmarks](guides/benchmarks.md) | **New in v1.3.** Published numbers: model comparison, plan mode on/off, CLAUDE.md payoff, cache impact |
+| [Decision Trees](guides/decision-trees.md) | **New in v1.4.** Mermaid flowcharts: which model to pick, when to use plan mode |
 | [Git Workflow](guides/git-workflow.md) | Commits, PRs, branch management with Claude Code |
 | [Tips and Tricks](guides/tips-and-tricks.md) | Keyboard shortcuts, slash commands, headless mode, CLI flags |
 
@@ -97,6 +103,7 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [Troubleshooting](guides/troubleshooting.md) | Common issues and how to resolve them |
 | [Common Mistakes](guides/common-mistakes.md) | Anti-patterns to avoid |
 | [Anti-Patterns Gallery](guides/anti-patterns.md) | **New in v1.4.** Annotated bad/fixed pairs: CLAUDE.md, hooks, prompts |
+| [Security Playbook](guides/security-playbook.md) | **New in v1.4.** Prompt injection, plugin supply chain, team audit checklist |
 
 ## Examples
 
@@ -124,6 +131,7 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [CLAUDE.md Linter](tools/lint-claude-md.sh) | Validates CLAUDE.md structure, catches common mistakes and secrets |
 | [Cost Estimator](tools/estimate-cost.sh) | Estimates token usage and cost per task based on your codebase size |
 | [Benchmark Harness](tools/benchmark.sh) | **New in v1.3.** Reproducible headless harness — run the benchmarks in your own repo |
+| [Benchmark Summary](tools/benchmark-summary.sh) | **New in v1.4.** Aggregates `benchmarks/history/*.csv` into a living `benchmarks/latest.md` (nightly CI) |
 | [Hook Scripts](tools/hooks/README.md) | **New in v1.3.** Drop-in `block-secrets`, `format-on-write`, `test-on-stop` |
 | [Quickstart Prompt](tools/quickstart-prompt.md) | Copy-paste prompt that makes Claude auto-generate a CLAUDE.md |
 
@@ -134,6 +142,17 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [commit-helper plugin](plugins/commit-helper/README.md) | **New in v1.3.** Working plugin: Conventional Commits skill + secret-blocking hook |
 | [Example Skills](examples/skills/README.md) | **New in v1.3.** Drop-in `/changelog`, `/pr-describe`, `/test-triage` |
 
+### Starter Kits
+
+Whole-project drop-in kits — `CLAUDE.md` + `.claude/` (settings, skills, hooks) per stack.
+
+| Kit | Description |
+|-----|-------------|
+| [React](starters/react/) | **New in v1.4.** React + TypeScript, ESLint+Prettier, `/component-new` and `/test-component` skills |
+| [Python](starters/python/) | **New in v1.4.** FastAPI/Django, ruff+pytest+mypy, `/api-endpoint` skill |
+| [Go](starters/go/) | **New in v1.4.** Go services, gofmt+golangci-lint, `/add-handler` skill |
+| [Starters overview](starters/README.md) | How to install a kit and conventions for adding new ones |
+
 ### Configuration References
 
 | Example | Description |
@@ -141,9 +160,15 @@ For detailed setup instructions, see the [Getting Started](guides/getting-starte
 | [Hook Scripts](examples/hook-scripts.md) | Ready-to-use hook configurations for common tasks |
 | [MCP Configs](examples/mcp-configs.md) | Sample MCP server setups for popular services |
 
+## Community
+
+- **[Awesome list](awesome.md)** — curated plugins, skills, posts, and tools that pair well with Claude Code.
+- **[Discussions](https://github.com/MuhammadUsmanGM/claude-code-best-practices/discussions)** — open-ended questions, ideas, show-and-tell. Enable in repo Settings → General → Features.
+- **[Issues](https://github.com/MuhammadUsmanGM/claude-code-best-practices/issues)** — concrete bugs and tool/guide requests. Templates under [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/).
+
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding new guides, style conventions, and the PR process.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding new guides, style conventions, and the PR process. Each PR runs through six CI checks (shellcheck, markdownlint, link-check, lint-claude-md, docs build, benchmarks — last is nightly only).
 
 ## License
 

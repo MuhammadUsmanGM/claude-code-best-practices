@@ -7,10 +7,45 @@ the very repo that teaches Claude Code. Read this before making changes.
 ## What this repo is
 
 - Markdown guides in `guides/`, stack-specific CLAUDE.md examples in
-  `examples/`, shell tools in `tools/`, plugins in `plugins/`.
-- No application code. No build step. No package manager.
+  `examples/`, shell tools in `tools/`, plugins in `plugins/`, whole-project
+  starter kits in `starters/`.
+- No application code. No build step. No package manager for the content
+  itself (mkdocs-material is used only to render the published site).
 - Quality gates are enforced in CI: `shellcheck`, `markdownlint`, a link
   checker, and `tools/lint-claude-md.sh` against every template.
+
+## Commands
+
+This repo has no application build. The "commands" are the lint and content
+tools. All of them run locally from the repo root.
+
+- `bash tools/lint-claude-md.sh <file>` — validate a `CLAUDE.md` against
+  structure, content-quality, and common-mistake checks.
+- `bash tools/lint-claude-md.sh CLAUDE.md` — validate this file.
+- `bash tools/benchmark.sh --help` — show harness flags. Actual runs require
+  `claude` installed and `ANTHROPIC_API_KEY` set.
+- `bash tools/benchmark-summary.sh` — regenerate `benchmarks/latest.md` from
+  the CSVs under `benchmarks/history/`.
+- `bash tools/generate-claude-md.sh` — interactive CLAUDE.md scaffolder (for
+  new projects, not for this repo).
+- `shellcheck $(find . -name '*.sh' -not -path './.git/*')` — run the same
+  shellcheck gate CI runs.
+- `markdownlint '**/*.md' --config .markdownlint.json --ignore-path .markdownlintignore`
+  — run the same markdownlint gate CI runs.
+- `mkdocs serve` — preview the site locally (needs `pip install -r requirements-docs.txt`).
+
+## Testing
+
+The repo has no runtime tests. Correctness is enforced through the four CI
+gates — each is the "test" for a specific class of error:
+
+- `shellcheck.yml` catches shell bugs before merge.
+- `markdownlint.yml` catches markdown structural errors.
+- `links.yml` catches broken internal and external links.
+- `lint-claude-md.yml` catches CLAUDE.md structural errors in every template.
+
+Before opening a PR, run the repo-local `/lint-docs` skill (or the four
+commands it wraps) and confirm all checks pass.
 
 ## How to help here
 

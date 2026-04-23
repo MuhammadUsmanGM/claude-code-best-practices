@@ -1,0 +1,76 @@
+name: benchmarks
+
+on:
+  schedule:
+    # Daily at 03:17 UTC — off the :00 / :30 marks to reduce fleet collisions.
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+    inputs:
+      models:
+        description: 'Comma-separated models'
+        default: 'sonnet-4.6,haiku-4.5'
+      runs:
+        description: 'Runs per cell'
+        default: '3'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: benchmarks
+  cancel-in-progress: false
+
+jobs:
+  run:
+    # Skipped by default for forks — running this in CI requires a valid
+    # ANTHROPIC_API_KEY secret in the repo settings. Delete `if` to enable.
+    if: github.repository == 'MuhammadUsmanGM/claude-code-best-practices'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Install jq and bc
+        run: sudo apt-get update && sudo apt-get install -y jq bc
+
+      - name: Run benchmark harness
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -euo pipefail
+          date="$(date -u +%Y-%m-%d)"
+          out="benchmarks/history/${date}.csv"
+          mkdir -p benchmarks/history
+          models="${{ github.event.inputs.models || 'sonnet-4.6,haiku-4.5' }}"
+          runs="${{ github.event.inputs.runs || '3' }}"
+          bash tools/benchmark.sh \
+            --repo "$PWD" \
+            --models "$models" \
+            --runs "$runs" \
+            --tasks "T1,T2,T5" \
+            --out "$out"
+          echo "OUT_FILE=$out" >> "$GITHUB_ENV"
+
+      - name: Regenerate summary
+        run: bash tools/benchmark-summary.sh
+
+      - name: Commit results
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add benchmarks/history/*.csv benchmarks/latest.md
+          if git diff --cached --quiet; then
+            echo "No benchmark changes to commit."
+            exit 0
+          fi
+          git commit -m "bench: nightly run $(date -u +%Y-%m-%d)"
+          git push

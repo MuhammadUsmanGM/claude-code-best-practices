@@ -1,0 +1,135 @@
+site_name: Claude Code Best Practices
+site_description: A comprehensive guide to getting the most out of Claude Code — Anthropic's agentic coding tool.
+site_url: https://MuhammadUsmanGM.github.io/claude-code-best-practices/
+repo_url: https://github.com/MuhammadUsmanGM/claude-code-best-practices
+repo_name: MuhammadUsmanGM/claude-code-best-practices
+edit_uri: edit/main/
+
+docs_dir: .
+site_dir: site
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search
+  - tags
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/MuhammadUsmanGM/claude-code-best-practices
+
+nav:
+  - Home: README.md
+  - Fundamentals:
+      - Getting Started: guides/getting-started.md
+      - CLAUDE.md Guide: guides/claude-md-guide.md
+      - Prompt Tips: guides/prompt-tips.md
+  - Workflows & Permissions:
+      - Workflow Patterns: guides/workflow-patterns.md
+      - Permission Modes: guides/permission-modes.md
+      - Debugging: guides/debugging.md
+      - Testing Workflows: guides/testing-workflows.md
+      - Migration Guide: guides/migration-guide.md
+  - Advanced:
+      - Custom Instructions: guides/custom-instructions.md
+      - Skills & Slash Commands: guides/skills-and-slash-commands.md
+      - Context Management: guides/context-management.md
+      - MCP Servers: guides/mcp-servers.md
+      - Hooks: guides/hooks.md
+      - Multi-Agent: guides/multi-agent.md
+      - IDE Integration: guides/ide-integration.md
+      - CI & Automation: guides/ci-and-automation.md
+      - Security Practices: guides/security-practices.md
+      - Security Playbook: guides/security-playbook.md
+      - Team Setup: guides/team-setup.md
+      - Building Custom MCP Servers: guides/building-custom-mcp-servers.md
+      - Advanced Architecture: guides/advanced-architecture.md
+      - Enterprise Patterns: guides/enterprise-patterns.md
+      - Cloud Integration: guides/cloud-integration.md
+      - Case Studies: guides/case-studies.md
+  - Cost & Efficiency:
+      - Performance Tuning: guides/performance-tuning.md
+      - Cost Management: guides/cost-management.md
+      - Benchmarks: guides/benchmarks.md
+      - Git Workflow: guides/git-workflow.md
+      - Tips & Tricks: guides/tips-and-tricks.md
+  - Reference:
+      - Troubleshooting: guides/troubleshooting.md
+      - Common Mistakes: guides/common-mistakes.md
+      - Anti-Patterns Gallery: guides/anti-patterns.md
+  - Starters:
+      - Overview: starters/README.md
+      - React: starters/react/CLAUDE.md
+      - Python: starters/python/CLAUDE.md
+      - Go: starters/go/CLAUDE.md
+  - Examples:
+      - Skills: examples/skills/README.md
+      - Hook Scripts: examples/hook-scripts.md
+      - MCP Configs: examples/mcp-configs.md
+  - Plugins:
+      - commit-helper: plugins/commit-helper/README.md
+  - Contributing: CONTRIBUTING.md
+  - Changelog: CHANGELOG.md

@@ -1,0 +1,55 @@
+name: Guide request
+description: Suggest a new guide, a major revision, or a gap in the existing guides.
+title: "[guide] <short description>"
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For small fixes (typos, broken links, a single inaccurate paragraph), use the **Bug report** template instead.
+
+  - type: textarea
+    id: topic
+    attributes:
+      label: Topic
+      description: What should the guide (or revision) cover? One or two sentences.
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is this missing or under-served?
+      description: What question do you currently have to answer by reading multiple places, or by asking someone?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: placement
+    attributes:
+      label: Where would it go?
+      options:
+        - Fundamentals
+        - Workflows & Permissions
+        - Advanced
+        - Cost & Efficiency
+        - Reference
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: outline
+    attributes:
+      label: Rough outline (optional)
+      description: H2s you'd expect. Not binding — helps the reviewer assess scope.
+
+  - type: checkboxes
+    id: check
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing guides and none cover this.
+          required: true
+        - label: I've read CONTRIBUTING.md for the guide structure rules.
+          required: true

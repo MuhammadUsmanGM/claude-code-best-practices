@@ -4,7 +4,9 @@
 
 **How to read this page.** The numbers below are representative results from running `tools/benchmark.sh` against a fixed task set (see [Task set](#task-set)). Your numbers will differ — model pricing changes, codebases differ, prompt caching behaves differently under load. The **ratios** and **direction** of the results are what to trust; the absolute values are a reference point. Re-run the harness in your own repo with `bash tools/benchmark.sh` to get numbers that match your setup.
 
-**Last run:** 2026-04-22 · Claude Code v2.1.92 · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
+**Living data.** A nightly CI job runs a reduced task set (T1, T2, T5) and commits results to [`benchmarks/history/`](../benchmarks/history/). The rolling summary — latest run plus 30-run trend — is regenerated into [`benchmarks/latest.md`](../benchmarks/latest.md) on every nightly run. The static tables below are the curated reference baseline; the living data is for tracking drift.
+
+**Last reference run:** 2026-04-22 · Claude Code v2.1.92 · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
 
 ---
 
@@ -141,6 +143,7 @@ If you only run two comparisons, run these:
 
 ## See also
 
+- [Latest nightly summary](../benchmarks/latest.md) — rolling 30-run medians, regenerated daily
 - [Performance Tuning](performance-tuning.md) — model selection and fast mode
 - [Cost Management](cost-management.md) — monitoring usage, budgets
 - [Context Management](context-management.md) — keeping sessions lean to preserve cache
