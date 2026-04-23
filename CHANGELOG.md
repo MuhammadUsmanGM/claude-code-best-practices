@@ -57,8 +57,8 @@ All notable changes to this project are documented here. Format loosely follows
   open-ended questions to Discussions; PR template checklist ties to the
   style rules in `CONTRIBUTING.md`.
 - **Social preview card** ([`.github/social-preview.svg`](.github/social-preview.svg))
-  — 1280×640 SVG source. [`.github/README.md`](.github/README.md) documents
-  how to render it to PNG and upload it via repo settings.
+  — 1280×640 SVG source. Convert with `rsvg-convert`, Inkscape, or ImageMagick,
+  then upload via **Repo → Settings → General → Social preview**.
 - **Extra README badges** — License, PRs-welcome, and Awesome-list badges;
   new Community section linking the awesome list, Discussions, and Issues.
 
