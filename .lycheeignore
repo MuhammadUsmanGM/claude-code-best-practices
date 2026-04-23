@@ -12,3 +12,8 @@ https://raw.githubusercontent.com/<your-fork>/.*
 
 # Anthropic API endpoints — not meant to be fetched by the checker.
 ^https?://api\.anthropic\.com/.*
+
+# Ignore project's own URLs that may fail before first deploy or activation
+https://muhammadusmangm\.github\.io/claude-code-best-practices/.*
+https://github\.com/MuhammadUsmanGM/claude-code-best-practices/discussions.*
+
