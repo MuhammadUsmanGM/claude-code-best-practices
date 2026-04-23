@@ -39,13 +39,18 @@ jobs:
       - name: Prepare docs directory
         run: |
           mkdir -p docs
-          # Copy everything to docs/ to satisfy relative links (LICENSE, etc.)
+          # Copy everything to docs/
           cp -r . docs/ || true
+          # Rename dot-folders so MkDocs processes them (it ignores hidden folders)
+          mv docs/.github docs/github_internal || true
+          mv docs/.claude docs/claude_internal || true
           # Clean up to avoid infinite recursion and unwanted files
-          rm -rf docs/docs docs/site docs/.git docs/.github
-          # Update internal links from README.md to index.md before renaming the files
+          rm -rf docs/docs docs/site docs/.git
+          # Update internal links from README.md to index.md and handle renamed dot-folders
           find docs -name "*.md" -exec sed -i 's/README\.md/index.md/g' {} +
-          # Recursively rename README.md to index.md to satisfy MkDocs directory links
+          find docs -name "*.md" -exec sed -i 's/\.github/github_internal/g' {} +
+          find docs -name "*.md" -exec sed -i 's/\.claude/claude_internal/g' {} +
+          # Recursively rename README.md to index.md for canonical MkDocs structure
           find docs -name "README.md" -execdir mv README.md index.md \;
 
       - name: Build site

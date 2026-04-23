@@ -61,6 +61,7 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+      auto_title: false
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences:
@@ -156,5 +157,6 @@ nav:
       - commit-helper: plugins/commit-helper/index.md
       - commit-helper Skill: plugins/commit-helper/skills/conventional-commit/SKILL.md
   - Community: awesome.md
+  - Project Config: CLAUDE.md
   - Contributing: CONTRIBUTING.md
   - Changelog: CHANGELOG.md
