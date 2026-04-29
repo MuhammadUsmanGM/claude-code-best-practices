@@ -6,7 +6,7 @@
 
 **Living data (bring your own key).** The nightly CI job is wired up in [`.github/workflows/benchmarks.yml`](../.github/workflows/benchmarks.yml) but the cron trigger is commented out — running it bills the owner of `ANTHROPIC_API_KEY` for tokens, which this repo isn't currently funding. Anyone can trigger it manually via **Actions → benchmarks → Run workflow** on a fork with `ANTHROPIC_API_KEY` set as a repo secret, or uncomment the `schedule:` block to turn nightly back on. Results land in [`benchmarks/history/`](../benchmarks/history/) and the rolling summary regenerates into [`benchmarks/latest.md`](../benchmarks/latest.md). The static tables below are the curated reference baseline.
 
-**Last reference run:** 2026-04-22 · Claude Code v2.1.92 · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
+**Last reference run:** 2026-04-22 · Claude Code v2.1.122 · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
 
 ---
 
@@ -116,7 +116,7 @@ Same prompt, run twice back-to-back vs. with a ≥ 5-minute gap (cache TTL expir
 ## Reproducing these numbers
 
 1. Clone this repo.
-2. Install Claude Code v2.1.92 or later: `npm install -g @anthropic-ai/claude-code`.
+2. Install Claude Code v2.1.122 or later: `npm install -g @anthropic-ai/claude-code`.
 3. Run the harness against your own codebase:
 
 ```bash

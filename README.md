@@ -3,7 +3,7 @@
 > **The community handbook for shipping real software with [Claude Code](https://docs.anthropic.com/en/docs/claude-code).**
 > Guides, working plugins, drop-in starter kits, published benchmarks, and a dogfooded `.claude/` setup you can copy.
 >
-> **Last updated:** April 23, 2026 · **v1.4** · Covers Claude Code **v2.1.92** · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
+> **Last updated:** April 29, 2026 · **v1.5** · Covers Claude Code **v2.1.122** · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -25,7 +25,7 @@ This repo pulls it together into one place — **opinionated, tested, and dogfoo
 
 - **30+ guides** covering fundamentals, workflows, permissions, advanced architecture, cost management, and security.
 - **11 `CLAUDE.md` templates** for React, Python, Go, Rust, Rails, Django, Next.js, Spring Boot, Flutter, monorepos, and a minimal starter.
-- **3 starter kits** — whole-project drop-ins (`CLAUDE.md` + `.claude/` with settings, skills, and hooks) for React, Python, and Go.
+- **4 starter kits** — whole-project drop-ins (`CLAUDE.md` + `.claude/` with settings, skills, and hooks) for React, Next.js, Python, and Go.
 - **Working plugin** (`commit-helper`) with a Conventional Commits skill and a `PreToolUse` hook that blocks secrets before they're committed.
 - **Drop-in skills and hook scripts** — `/changelog`, `/pr-describe`, `/test-triage`, plus `block-secrets`, `format-on-write`, and `test-on-stop`.
 - **Published benchmarks** — model comparison, plan-mode on/off, CLAUDE.md payoff, and prompt-cache impact, with a reproducible harness so you can rerun them in your own repo.
@@ -74,7 +74,7 @@ New to all of this? Read [Getting Started](guides/getting-started.md) → [CLAUD
 claude-code-best-practices/
 ├── guides/          30+ guides — fundamentals, workflows, advanced, cost, security, reference
 ├── examples/        CLAUDE.md templates (11 stacks) + drop-in skills + hook-script recipes
-├── starters/        Whole-project starter kits (React, Python, Go)
+├── starters/        Whole-project starter kits (React, Next.js, Python, Go)
 ├── plugins/         Working plugins — currently commit-helper
 ├── tools/           Shell utilities — CLAUDE.md generator, linter, cost estimator, benchmark harness, hooks
 ├── benchmarks/      Reproducible benchmark results and rolling summary
@@ -180,6 +180,7 @@ claude-code-best-practices/
 | Item | Description |
 |------|-------------|
 | [commit-helper plugin](plugins/commit-helper/README.md) | **New in v1.3.** Working plugin: Conventional Commits skill + secret-blocking hook |
+| [claude-md-checker plugin](plugins/claude-md-checker/README.md) | **New in v1.5.** PreToolUse guard that runs `lint-claude-md.sh` on every CLAUDE.md edit |
 | [Example Skills](examples/skills/README.md) | **New in v1.3.** Drop-in `/changelog`, `/pr-describe`, `/test-triage` |
 
 ### Starter Kits
@@ -189,6 +190,7 @@ Whole-project drop-in kits — `CLAUDE.md` + `.claude/` (settings, skills, hooks
 | Kit | Description |
 |-----|-------------|
 | [React](starters/react/) | **New in v1.4.** React + TypeScript, ESLint+Prettier, `/component-new` and `/test-component` skills |
+| [Next.js](starters/nextjs/) | **New in v1.5.** Next.js 15 App Router, TypeScript, RSC + server-action conventions |
 | [Python](starters/python/) | **New in v1.4.** FastAPI/Django, ruff+pytest+mypy, `/api-endpoint` skill |
 | [Go](starters/go/) | **New in v1.4.** Go services, gofmt+golangci-lint, `/add-handler` skill |
 | [Starters overview](starters/README.md) | How to install a kit and conventions for adding new ones |

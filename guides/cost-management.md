@@ -6,7 +6,7 @@ Claude Code consumes tokens with every interaction. Understanding how token usag
 
 Every message you send and every response Claude generates costs tokens. But the biggest driver of cost is **context size** — the accumulated conversation history that gets sent with each new message. As your conversation grows, each exchange becomes more expensive.
 
-With v2.1.92, **Opus 4.6 now supports a 1M token context window** by default on Max, Team, and Enterprise plans. This lets you sustain much longer sessions when using Opus, which is great for productivity but means a single extended session can accumulate significant cost if you are not mindful. Sonnet and Haiku have smaller context windows, so context management is even more important with those models.
+With v2.1.122, **Opus 4.7 now supports a 1M token context window** by default on Max, Team, and Enterprise plans. This lets you sustain much longer sessions when using Opus, which is great for productivity but means a single extended session can accumulate significant cost if you are not mindful. Sonnet and Haiku have smaller context windows, so context management is even more important with those models.
 
 Key cost factors:
 - **Conversation length** — longer sessions mean more tokens per message (a 500K-token Opus session sends 500K tokens with every new exchange)
@@ -49,7 +49,7 @@ Switch models mid-session with `/model`:
 ```
 /model claude-haiku-4-5-20251001    # Drop to Haiku for simple tasks
 /model claude-sonnet-4-6            # Back to Sonnet for real work
-/model claude-opus-4-6              # Upgrade for the hard part
+/model claude-opus-4-7              # Upgrade for the hard part
 ```
 
 Most developers find that **80% of their work is Sonnet-appropriate.** Reserve Opus for the 10-20% that actually needs it.
@@ -72,7 +72,7 @@ The `/compact` command summarizes your conversation history, dramatically reduci
 - When `/cost` shows context growing beyond 200K tokens and you are doing routine work
 - Before starting a new line of work in the same session
 
-**What it saves:** A long Opus session can accumulate 300K-500K tokens of context. Compacting cuts this to 5-10K, meaning every subsequent message costs a fraction of what it would otherwise. With Opus 4.6's 1M token window on Max/Team/Enterprise, you will not _need_ to compact to avoid hitting the ceiling -- but you should still compact to **control costs**. A message at 500K context costs 50x more than one at 10K context. On Sonnet and Haiku, compacting also helps avoid hitting their smaller context limits.
+**What it saves:** A long Opus session can accumulate 300K-500K tokens of context. Compacting cuts this to 5-10K, meaning every subsequent message costs a fraction of what it would otherwise. With Opus 4.7's 1M token window on Max/Team/Enterprise, you will not _need_ to compact to avoid hitting the ceiling -- but you should still compact to **control costs**. A message at 500K context costs 50x more than one at 10K context. On Sonnet and Haiku, compacting also helps avoid hitting their smaller context limits.
 
 ## One Task Per Session
 

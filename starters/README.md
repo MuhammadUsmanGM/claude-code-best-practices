@@ -10,6 +10,7 @@ and a couple of opinionated skills that match the stack's idioms.
 | Kit | Stack assumption | What you get |
 |-----|------------------|--------------|
 | [react](react/) | Vite or Next.js app, TypeScript, ESLint + Prettier | `CLAUDE.md`, `.claude/settings.json`, skills: `/component-new`, `/test-component`, shared hooks |
+| [nextjs](nextjs/) | Next.js 15 App Router, TypeScript, RSC defaults | `CLAUDE.md` with server-vs-client conventions and Prisma/auth hooks |
 | [python](python/) | FastAPI or Django, `ruff` + `pytest`, `pyproject.toml` | `CLAUDE.md`, `.claude/settings.json`, skill: `/api-endpoint`, shared hooks |
 | [go](go/)       | Go modules, standard `go test`, optional `golangci-lint` | `CLAUDE.md`, `.claude/settings.json`, skill: `/add-handler`, shared hooks |
 

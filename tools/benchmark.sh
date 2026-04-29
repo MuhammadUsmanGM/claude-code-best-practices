@@ -9,7 +9,7 @@
 #   bash tools/benchmark.sh --repo /path/to/repo --models sonnet,haiku --out results.csv
 #   bash tools/benchmark.sh --help
 #
-# Requires: claude (>= 2.1.92), jq, bc. Optional: a git-clean target repo.
+# Requires: claude (>= 2.1.122), jq, bc. Optional: a git-clean target repo.
 
 set -euo pipefail
 

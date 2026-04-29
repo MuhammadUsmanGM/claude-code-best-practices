@@ -3,6 +3,40 @@
 All notable changes to this project are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.5.0] - 2026-04-29
+
+### Added
+- **Next.js starter kit** ([`starters/nextjs/CLAUDE.md`](starters/nextjs/)) —
+  drop-in `CLAUDE.md` for Next.js 15 (App Router) projects with conventions for
+  Server vs. Client Components, server actions, Prisma/auth wiring, and the
+  Vitest + Playwright test layout. Mirrors the structure of the React starter.
+- **`claude-md-checker` plugin** ([`plugins/claude-md-checker/`](plugins/claude-md-checker/))
+  — `PreToolUse` hook on `Edit`/`Write` that runs `tools/lint-claude-md.sh`
+  against any file whose basename is `CLAUDE.md`. Blocks the write on lint
+  errors (exit 2) and surfaces the lint output. Warnings (exit 1) pass
+  through. No-ops cleanly when no linter is on disk.
+
+### Changed
+- **Versions and model IDs refreshed.** Bumped Claude Code references from
+  `v2.1.92` to `v2.1.122` and Opus references from `4.6` to `4.7` across
+  [`README.md`](README.md), [`guides/benchmarks.md`](guides/benchmarks.md),
+  [`guides/cost-management.md`](guides/cost-management.md),
+  [`guides/context-management.md`](guides/context-management.md),
+  [`guides/performance-tuning.md`](guides/performance-tuning.md),
+  [`guides/tips-and-tricks.md`](guides/tips-and-tricks.md),
+  [`guides/troubleshooting.md`](guides/troubleshooting.md),
+  [`tools/benchmark.sh`](tools/benchmark.sh), and the bug-report template.
+  Sonnet 4.6 / Haiku 4.5 unchanged.
+- **README tables updated** — added Next.js to the starters table and
+  `claude-md-checker` to the plugins table; bumped the "Last updated" header
+  to v1.5 / 2026-04-29.
+
+### Notes
+- Benchmark numbers in [`guides/benchmarks.md`](guides/benchmarks.md) were
+  **not rerun** for this release — only the version-line metadata was bumped.
+  Rerun the harness on a fork with `ANTHROPIC_API_KEY` set if you want fresh
+  numbers under v2.1.122.
+
 ## [1.4.0] - 2026-04-23
 
 ### Added

@@ -1,0 +1,18 @@
+{
+  "name": "claude-md-checker",
+  "version": "1.0.0",
+  "description": "PreToolUse guard that runs lint-claude-md.sh on every Edit/Write to a CLAUDE.md file. Blocks the write if the lint reports errors.",
+  "author": "claude-code-best-practices",
+  "license": "MIT",
+  "claudeCode": {
+    "minVersion": "2.1.122"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "command": "bash ${CLAUDE_PLUGIN_DIR}/hooks/check-claude-md.sh"
+      }
+    ]
+  }
+}

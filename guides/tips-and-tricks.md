@@ -31,7 +31,7 @@ Slash commands are typed directly into the prompt input:
 ```
 /model claude-haiku-4-5-20251001    # Fast, cheap — good for simple tasks
 /model claude-sonnet-4-6            # Balanced — default for most work
-/model claude-opus-4-6              # Most capable — for complex tasks
+/model claude-opus-4-7              # Most capable — for complex tasks
 ```
 
 ### Other Commands
@@ -83,7 +83,7 @@ git log --oneline -20 | claude -p "summarize recent changes"
 ```bash
 claude                          # Interactive mode (default)
 claude -p "prompt"              # One-shot prompt, exit after response
-claude --model claude-opus-4-6  # Start with a specific model
+claude --model claude-opus-4-7  # Start with a specific model
 claude --verbose                # Show additional debug output
 claude --allowedTools "Edit,Read,Bash"  # Restrict available tools
 ```

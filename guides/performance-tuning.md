@@ -8,7 +8,7 @@ Claude Code supports several models in the Claude family. Each trades off capabi
 
 | Model | Best For | Speed | Cost |
 |-------|----------|-------|------|
-| Claude Opus 4.6 | Complex architecture, multi-file refactors, subtle bugs | Slower | Highest |
+| Claude Opus 4.7 | Complex architecture, multi-file refactors, subtle bugs | Slower | Highest |
 | Claude Sonnet 4.6 | General development, code review, feature implementation | Balanced | Medium |
 | Claude Haiku 4.5 | Quick questions, simple edits, formatting, boilerplate | Fastest | Lowest |
 
@@ -47,11 +47,11 @@ Toggle fast mode with `/fast` in any session. Fast mode uses the same model but 
 - Sessions where you are making many quick edits
 - Tasks where waiting for output slows your flow
 
-Fast mode does not reduce quality — it uses the same Claude Opus 4.6 model with faster output generation.
+Fast mode does not reduce quality — it uses the same Claude Opus 4.7 model with faster output generation.
 
-## The 1M Token Context Window (Opus 4.6)
+## The 1M Token Context Window (Opus 4.7)
 
-As of v2.1.92, **Opus 4.6 supports a 1M token context window** by default on Max, Team, and Enterprise plans (previously this required extra usage). Sonnet and Haiku have smaller context windows and will hit compression sooner.
+As of v2.1.122, **Opus 4.7 supports a 1M token context window** by default on Max, Team, and Enterprise plans (previously this required extra usage). Sonnet and Haiku have smaller context windows and will hit compression sooner.
 
 With Opus, you can work through large features, multi-file refactors, and extended debugging sessions without hitting context limits. However, larger context does not mean free -- every token in the window is sent with each new message, affecting both speed and cost.
 

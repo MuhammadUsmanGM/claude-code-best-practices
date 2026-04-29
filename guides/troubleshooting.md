@@ -32,7 +32,7 @@ echo $ANTHROPIC_API_KEY | head -c 10
 
 **Symptom:** "Context length exceeded" errors, or Claude seems to forget earlier parts of the conversation.
 
-As of v2.1.92, **Opus 4.6 supports a 1M token context window** on Max, Team, and Enterprise plans, so hitting the ceiling is much less common when using Opus. Sonnet and Haiku have smaller windows and may hit this issue sooner. If you do hit it, or if Claude seems to forget earlier context (due to automatic compression):
+As of v2.1.122, **Opus 4.7 supports a 1M token context window** on Max, Team, and Enterprise plans, so hitting the ceiling is much less common when using Opus. Sonnet and Haiku have smaller windows and may hit this issue sooner. If you do hit it, or if Claude seems to forget earlier context (due to automatic compression):
 
 **Fixes:**
 - Run `/compact` immediately — this compresses history and frees space

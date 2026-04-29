@@ -1,13 +1,13 @@
 # Managing the Context Window
 
-Claude Code operates within a context window whose size depends on your model and plan. As of v2.1.92, **Opus 4.6 supports a 1M token context window** by default on Max, Team, and Enterprise plans. Sonnet and Haiku have smaller windows. How you manage that window directly affects response quality, speed, and cost. This guide covers strategies for keeping context focused and knowing when to start fresh.
+Claude Code operates within a context window whose size depends on your model and plan. As of v2.1.122, **Opus 4.7 supports a 1M token context window** by default on Max, Team, and Enterprise plans. Sonnet and Haiku have smaller windows. How you manage that window directly affects response quality, speed, and cost. This guide covers strategies for keeping context focused and knowing when to start fresh.
 
 ## How Context Works
 
 Every message you send, every file Claude reads, and every tool result occupies tokens in the context window. With the 1M token limit, you can sustain much longer sessions than before -- reading dozens of files, making multi-file changes, and iterating extensively without hitting the ceiling. However, as the conversation grows, older messages get compressed automatically. Understanding this lifecycle helps you work more effectively:
 
 1. **Fresh context** — Early in a conversation, Claude has full access to everything discussed.
-2. **Active window** — With Opus 4.6 on Max/Team/Enterprise, the 1M token window lets you work through large features, multi-file refactors, and extended debugging sessions in a single conversation. Smaller models hit compression sooner.
+2. **Active window** — With Opus 4.7 on Max/Team/Enterprise, the 1M token window lets you work through large features, multi-file refactors, and extended debugging sessions in a single conversation. Smaller models hit compression sooner.
 3. **Compression** — As the window fills, the system summarizes older messages to make room.
 4. **Degradation** — After heavy compression, nuance from earlier exchanges may be lost.
 
@@ -53,9 +53,9 @@ Find all the places where we handle authentication errors
 and summarize the patterns used.
 ```
 
-## What 1M Tokens Gets You (Opus 4.6 on Max/Team/Enterprise)
+## What 1M Tokens Gets You (Opus 4.7 on Max/Team/Enterprise)
 
-To put the Opus 4.6 context limit in perspective:
+To put the Opus 4.7 context limit in perspective:
 
 | Content | Approximate tokens |
 |---------|-------------------|
