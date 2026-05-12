@@ -3,7 +3,7 @@
 > **The community handbook for shipping real software with [Claude Code](https://docs.anthropic.com/en/docs/claude-code).**
 > Guides, working plugins, drop-in starter kits, published benchmarks, and a dogfooded `.claude/` setup you can copy.
 >
-> **Last updated:** April 29, 2026 · **v1.5** · Covers Claude Code **v2.1.122** · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
+> **Last updated:** May 12, 2026 · **v1.6** · Covers Claude Code **v2.1.139** · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -100,6 +100,7 @@ claude-code-best-practices/
 | Guide | Description |
 |-------|-------------|
 | [Workflow Patterns](guides/workflow-patterns.md) | Common workflows for bug fixing, features, refactoring, and PR review |
+| [Goal Mode](guides/goal-mode.md) | **New in v1.6.** `/goal` completion conditions, when it beats plan mode + manual loops, headless and Remote Control |
 | [Permission Modes](guides/permission-modes.md) | Understanding and configuring permission levels |
 | [Debugging](guides/debugging.md) | Debugging strategies, stack traces, and fix-and-verify workflows |
 | [Testing Workflows](guides/testing-workflows.md) | Writing tests, TDD with Claude, fixing flaky tests, and coverage |
@@ -115,6 +116,7 @@ claude-code-best-practices/
 | [MCP Servers](guides/mcp-servers.md) | Setting up and using Model Context Protocol servers |
 | [Hooks](guides/hooks.md) | Pre/post tool hooks for automation |
 | [Multi-Agent](guides/multi-agent.md) | Teams, agent swarms, and worktrees |
+| [Agent View](guides/agent-view.md) | **New in v1.6.** The `claude agents` dashboard for triaging sessions across teams and worktrees |
 | [IDE Integration](guides/ide-integration.md) | VS Code, JetBrains setup and tips |
 | [CI and Automation](guides/ci-and-automation.md) | Headless mode, piping, scripting, CI pipelines, containers |
 | [Security Practices](guides/security-practices.md) | Secrets management, .claudeignore, safe permission patterns |
@@ -225,7 +227,7 @@ A sixth workflow ([benchmarks](.github/workflows/benchmarks.yml)) is wired up bu
 ## Changelog and versioning
 
 - [`CHANGELOG.md`](CHANGELOG.md) follows [Keep a Changelog](https://keepachangelog.com/).
-- Versions are semver. Current release: **v1.4.0**.
+- Versions are semver. Current release: **v1.6.0**.
 - Breaking changes to starter kits, plugins, or hook scripts bump the major version.
 
 ## License

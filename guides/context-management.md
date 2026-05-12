@@ -1,6 +1,6 @@
 # Managing the Context Window
 
-Claude Code operates within a context window whose size depends on your model and plan. As of v2.1.122, **Opus 4.7 supports a 1M token context window** by default on Max, Team, and Enterprise plans. Sonnet and Haiku have smaller windows. How you manage that window directly affects response quality, speed, and cost. This guide covers strategies for keeping context focused and knowing when to start fresh.
+Claude Code operates within a context window whose size depends on your model and plan. As of v2.1.139, **Opus 4.7 supports a 1M token context window** by default on Max, Team, and Enterprise plans. Sonnet and Haiku have smaller windows. How you manage that window directly affects response quality, speed, and cost. This guide covers strategies for keeping context focused and knowing when to start fresh.
 
 ## How Context Works
 
@@ -103,3 +103,4 @@ The compression is lossy — specific code snippets, exact line numbers, and nua
 - [CLAUDE.md Guide](claude-md-guide.md) — Storing durable project context
 - [Multi-Agent](multi-agent.md) — Using subagents for context isolation
 - [Prompt Tips](prompt-tips.md) — Writing effective prompts within context constraints
+- [Agent View](agent-view.md) — Spot the session whose context is bloating

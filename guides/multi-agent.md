@@ -159,6 +159,7 @@ When multiple agents modify related files, conflicts can arise during merge. Str
 
 ## See Also
 
+- [Agent View](agent-view.md) — The `claude agents` dashboard for finding and triaging sessions across teams
 - [Context Management](context-management.md) — Why subagents help preserve context
 - [Getting Started](getting-started.md) — Setting up Claude Code before using teams
 - [Hooks](hooks.md) — Automating actions across agent workflows

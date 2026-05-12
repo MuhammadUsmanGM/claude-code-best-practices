@@ -181,3 +181,4 @@ Claude handles this naturally in a single interactive session -- just guide it t
 - [Debugging](debugging.md) -- Dedicated debugging strategies and workflows
 - [Testing Workflows](testing-workflows.md) -- TDD, test coverage, and fixing flaky tests
 - [Case Studies](case-studies.md) -- Real-world walkthroughs of complete workflows
+- [Goal Mode](goal-mode.md) -- Run mechanical-convergence workflows unsupervised across turns

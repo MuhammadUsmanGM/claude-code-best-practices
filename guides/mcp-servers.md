@@ -117,6 +117,29 @@ Register it in your project settings:
 }
 ```
 
+## Handling Large Tool Results
+
+By default, Claude Code truncates oversized MCP tool results to keep the model's context manageable. For a `list_files` call that returns 30 entries, this is a feature. For a database schema dump or a CSV that the model needs to reason over in full, it is the difference between a useful answer and a wrong one.
+
+Claude Code v2.1.139 added a per-result override: an MCP server can annotate its response with `_meta["anthropic/maxResultSizeChars"]` to request a higher cap, up to 500,000 characters. Claude Code honours the annotation per-call; you do not configure it client-side.
+
+### When to bump the cap
+
+| Tool result | Default truncation is... | Set the cap to... |
+|-------------|--------------------------|-------------------|
+| Listing 20 services | Fine | Don't override |
+| Recent 100 log lines | Fine | Don't override |
+| Full database schema (`information_schema`) | Probably cut mid-table | 100K -- 250K |
+| Large query result for analysis | Cut to ~the first page | Up to 500K, paginate if larger |
+| Full file tree of a 5K-file monorepo | Cut after a few directories | 200K |
+| Production stack trace with full request context | Usually fine | Don't override |
+
+Rule of thumb: only override when the model needs the *entire* result to reason correctly. Pagination or filtering at the server is almost always better than maxing out the cap.
+
+### Setting the annotation
+
+If you maintain the server, set the annotation on the response. See [Building Custom MCP Servers](building-custom-mcp-servers.md) for full code samples. If you do not maintain the server, file an issue upstream -- this is a server-side setting, not a Claude Code config.
+
 ## Debugging MCP Issues
 
 Common problems and solutions:

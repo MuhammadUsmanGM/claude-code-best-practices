@@ -3,6 +3,58 @@
 All notable changes to this project are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.6.0] - 2026-05-12
+
+### Added
+- **Agent View guide** ([`guides/agent-view.md`](guides/agent-view.md)) —
+  covers the `claude agents` dashboard added in Claude Code v2.1.139. When to
+  use it vs. tmux or worktrees, how it interacts with `/teams`, and
+  triage/cost workflows. Cross-linked bidirectionally with `multi-agent.md`,
+  `cost-management.md`, and `context-management.md`.
+- **Goal Mode guide** ([`guides/goal-mode.md`](guides/goal-mode.md)) — covers
+  the `/goal` command added in Claude Code v2.1.139. Completion-condition
+  patterns (good vs. bad), when goal mode beats plan mode + manual loops,
+  cost implications of "keeps working across turns," and behaviour in
+  interactive, `-p` headless, and Remote Control modes. Cross-linked
+  bidirectionally with `workflow-patterns.md`, `permission-modes.md`,
+  `cost-management.md`, and `ci-and-automation.md`.
+
+### Changed
+- **Security guides document `disableSkillShellExecution`** (new in v2.1.139)
+  in [`guides/security-practices.md`](guides/security-practices.md) and
+  [`guides/security-playbook.md`](guides/security-playbook.md). Added to the
+  recommended default `.claude/settings.json` snippet, the per-user audit
+  checklist, and the security checklist. Threat model: a future malicious
+  plugin update cannot add inline `curl … | sh` to a `SKILL.md` and have it
+  execute.
+- **MCP guides cover `_meta["anthropic/maxResultSizeChars"]`** (new in
+  v2.1.139). [`guides/mcp-servers.md`](guides/mcp-servers.md) adds a
+  "Handling Large Tool Results" section with a table of when to override the
+  default truncation cap (up to 500K chars).
+  [`guides/building-custom-mcp-servers.md`](guides/building-custom-mcp-servers.md)
+  adds TypeScript and Python snippets showing how server authors set the
+  annotation, plus guidance on picking a cap and paginating instead of
+  maxing out.
+- **Versions and metadata refreshed.** Bumped Claude Code references from
+  `v2.1.122` to `v2.1.139` across [`README.md`](README.md),
+  [`guides/benchmarks.md`](guides/benchmarks.md),
+  [`guides/context-management.md`](guides/context-management.md),
+  [`guides/cost-management.md`](guides/cost-management.md),
+  [`guides/performance-tuning.md`](guides/performance-tuning.md),
+  [`guides/troubleshooting.md`](guides/troubleshooting.md),
+  [`tools/benchmark.sh`](tools/benchmark.sh), and the bug-report template.
+  Opus 4.7 / Sonnet 4.6 / Haiku 4.5 unchanged.
+- **README header updated** — "Last updated" bumped to May 12, 2026,
+  version chip to v1.6, "Current release" line in the versioning section
+  set to v1.6.0.
+
+### Notes
+- Benchmark numbers in [`guides/benchmarks.md`](guides/benchmarks.md) were
+  **not rerun** for this release — only the version-line metadata was bumped.
+  The "Last reference run" date (2026-04-22) is intentionally unchanged.
+  Rerun the harness on a fork with `ANTHROPIC_API_KEY` set if you want fresh
+  numbers under v2.1.139.
+
 ## [1.5.0] - 2026-04-29
 
 ### Added

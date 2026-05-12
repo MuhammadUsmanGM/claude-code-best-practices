@@ -6,7 +6,7 @@ Claude Code consumes tokens with every interaction. Understanding how token usag
 
 Every message you send and every response Claude generates costs tokens. But the biggest driver of cost is **context size** — the accumulated conversation history that gets sent with each new message. As your conversation grows, each exchange becomes more expensive.
 
-With v2.1.122, **Opus 4.7 now supports a 1M token context window** by default on Max, Team, and Enterprise plans. This lets you sustain much longer sessions when using Opus, which is great for productivity but means a single extended session can accumulate significant cost if you are not mindful. Sonnet and Haiku have smaller context windows, so context management is even more important with those models.
+With v2.1.139, **Opus 4.7 now supports a 1M token context window** by default on Max, Team, and Enterprise plans. This lets you sustain much longer sessions when using Opus, which is great for productivity but means a single extended session can accumulate significant cost if you are not mindful. Sonnet and Haiku have smaller context windows, so context management is even more important with those models.
 
 Key cost factors:
 - **Conversation length** — longer sessions mean more tokens per message (a 500K-token Opus session sends 500K tokens with every new exchange)
@@ -155,3 +155,5 @@ The key variable is not which model you use — it is **how long your conversati
 - [Context Management](context-management.md) — Deep dive into managing conversation context
 - [Tips and Tricks](tips-and-tricks.md) — More slash commands and efficiency techniques
 - [Common Mistakes](common-mistakes.md) — Anti-patterns that waste tokens
+- [Goal Mode](goal-mode.md) — Watching token spend in unsupervised `/goal` loops
+- [Agent View](agent-view.md) — Find the session that ate your budget

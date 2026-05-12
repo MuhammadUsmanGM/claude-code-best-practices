@@ -13,7 +13,7 @@ Read this once when you set Claude Code up for a team; revisit quarterly.
 | Threat | Attack surface | Mitigation |
 |--------|----------------|------------|
 | Prompt injection from tool results | `WebFetch`, `Grep`/`Read` on untrusted files, MCP servers, issue/PR bodies, CI logs | Treat all tool output as untrusted data; narrow permissions; human in the loop on destructive actions |
-| Malicious plugin or skill | Anything under `~/.claude/plugins/`, `.claude/skills/` in a repo you cloned | Review before install; pin versions; don't run new plugins with broad permissions |
+| Malicious plugin or skill | Anything under `~/.claude/plugins/`, `.claude/skills/` in a repo you cloned | Review before install; pin versions; don't run new plugins with broad permissions; enable `disableSkillShellExecution` |
 | Over-permissioned session | `.claude/settings.json` with a liberal allowlist or `--dangerously-skip-permissions` | Allowlist, not denylist; quarterly review; never skip permissions in shared environments |
 | Secret exfiltration via committed files | `.env`, credentials pasted into CLAUDE.md, pasted into transcripts | `block-secrets` hook (Pre `Write`/`Edit` and Pre `Bash` for `git commit`); pre-push audit |
 | Session hijack via shared transcript | Transcripts shared in bug reports, copied into issue trackers | Redact before sharing; assume transcripts leak |
@@ -84,6 +84,16 @@ manager with no lockfile and no signing. Assume that.
 5. **Install to user scope for evaluation**, then promote to project scope
    only after you've used it for a week.
 
+### Kill the inline-shell channel
+
+Claude Code v2.1.139 added `disableSkillShellExecution`. When set, inline shell snippets inside skills, custom slash commands, and plugin commands no longer execute. The skill still loads and its description still matches; the model just cannot use the bypass.
+
+```json
+{ "disableSkillShellExecution": true }
+```
+
+Set this in `~/.claude/settings.json` if you have any third-party plugins installed. A future malicious update to a plugin you trust today cannot suddenly add a `curl ... | sh` to a `SKILL.md` and have it execute. Skills that legitimately need shell will fail loudly -- which is what you want; rewrite them to route through the `Bash` tool, which is allowlist-gated and auditable per-command.
+
 ### Ongoing hygiene
 
 - Quarterly review: `ls ~/.claude/plugins/` and prune anything nobody uses.
@@ -116,6 +126,8 @@ Run this quarterly (or on every new joiner to a Claude-using team).
 - [ ] Check user-scope skills: `ls ~/.claude/skills/`. Prune unused.
 - [ ] Check global `~/.claude/settings.json` — user-global permissions apply
       in every project. They should be minimal.
+- [ ] `disableSkillShellExecution: true` is set globally when any
+      third-party plugin or skill is installed.
 - [ ] Confirm no MCP server config references credentials that aren't
       revocable.
 
@@ -144,6 +156,7 @@ For any team not sure where to start, this is a safe default for a project
 
 ```json
 {
+  "disableSkillShellExecution": true,
   "hooks": {
     "PreToolUse": [
       {

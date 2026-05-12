@@ -212,6 +212,47 @@ server.prompt(
 );
 ```
 
+## Returning Large Results
+
+Claude Code truncates oversized MCP responses by default. For tools that legitimately return large blobs -- full database schemas, large query results, or whole-tree listings -- annotate the response with `_meta["anthropic/maxResultSizeChars"]` (added in Claude Code v2.1.139). The cap is per-call and tops out at 500,000 characters.
+
+### TypeScript
+
+```typescript
+server.tool(
+  "dump_schema",
+  "Return the full information_schema for the connected database",
+  { include_indexes: z.boolean().default(true) },
+  async ({ include_indexes }) => {
+    const schema = await dumpSchema({ include_indexes });
+    return {
+      content: [{ type: "text", text: schema }],
+      _meta: { "anthropic/maxResultSizeChars": 250_000 },
+    };
+  }
+);
+```
+
+### Python
+
+```python
+@mcp.tool()
+async def dump_schema(include_indexes: bool = True) -> dict:
+    """Return the full information_schema for the connected database."""
+    schema = await dump_schema_impl(include_indexes=include_indexes)
+    return {
+        "content": [{"type": "text", "text": schema}],
+        "_meta": {"anthropic/maxResultSizeChars": 250_000},
+    }
+```
+
+### Picking a cap
+
+- **Only override when the model needs the whole result.** A summary, a count, or the first 50 rows is almost always better than maxing out the cap. Token cost scales with the size you actually emit.
+- **Set the cap, do not pad to it.** The annotation is a *ceiling*. Emit the smallest text that still answers the question, even if you allowed 500K.
+- **Paginate when the underlying data exceeds 500K.** Expose `offset` and `limit` parameters and let Claude page through; do not split a single logical result across two annotated calls.
+- **Default to silence.** Tools that fit inside the default truncation should not set the annotation at all. Leaving it off keeps the cost visible in normal sessions.
+
 ## Testing Your Server
 
 ### Manual testing

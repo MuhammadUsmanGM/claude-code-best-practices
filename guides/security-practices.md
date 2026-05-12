@@ -99,6 +99,29 @@ Apply the principle of least privilege when configuring Claude Code permissions.
 - Review your `.claude/settings.json` allowlist periodically to remove stale entries.
 - When in doubt, keep the default prompt-per-action mode -- the small friction is worth the safety.
 
+## Disabling Inline Shell Execution in Skills
+
+Skills, custom slash commands, and plugin commands can contain inline shell snippets that Claude Code will execute when the command is invoked. On a machine that has any third-party plugin installed -- even one you trust -- this is a meaningful attack surface: a future plugin update can quietly add a shell snippet that runs the next time the command fires.
+
+`disableSkillShellExecution` (added in Claude Code v2.1.139) turns the entire mechanism off. Skills still load, descriptions still match, but inline shell stops being a thing the model can use.
+
+```json
+{
+  "disableSkillShellExecution": true
+}
+```
+
+Set this in `~/.claude/settings.json` (applies to every project) or `.claude/settings.json` for a specific repo. The right default depends on who controls the skills you have installed:
+
+| Scenario | Recommendation |
+|---|---|
+| You only run skills you personally wrote | Leave enabled |
+| You have any third-party plugin or skill installed | Enable `disableSkillShellExecution` |
+| Shared dev machines, contractor laptops, anything multi-tenant | Enable `disableSkillShellExecution` in the global config |
+| Production-credential repos | Enable, regardless of plugin trust |
+
+What you lose: skills that legitimately depend on inline shell will stop working until you rewrite them to use the `Bash` tool through the normal allowlist (which is auditable per-command). What you gain: a future malicious or compromised plugin cannot add a one-line `curl ... | sh` to a `SKILL.md` and have it execute.
+
 ## Auditing Claude's Actions
 
 Trust but verify. Claude Code provides several mechanisms for reviewing what it has done.
@@ -132,6 +155,7 @@ git diff HEAD~1
 - [ ] Permission mode is appropriate for the repository's sensitivity level
 - [ ] Tool allowlist includes only safe, reviewed commands
 - [ ] `--dangerously-skip-permissions` is never used on production repos
+- [ ] `disableSkillShellExecution` is set when third-party plugins or skills are installed
 - [ ] PostToolUse hooks log actions for audit trails
 - [ ] All diffs are reviewed before commits are pushed
 - [ ] Team members understand and follow these practices

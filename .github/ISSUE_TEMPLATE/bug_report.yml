@@ -38,7 +38,7 @@ body:
     id: claude-code-version
     attributes:
       label: Claude Code version (if relevant)
-      placeholder: "v2.1.122"
+      placeholder: "v2.1.139"
 
   - type: checkboxes
     id: check
