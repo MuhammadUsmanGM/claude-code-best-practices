@@ -33,6 +33,7 @@ Drop-in `SKILL.md` files you can copy into `.claude/skills/`.
 - [pr-describe](examples/skills/pr-describe/SKILL.md) — draft PR title and body from the current branch.
 - [test-triage](examples/skills/test-triage/SKILL.md) — classify failing tests as flaky vs. real, propose a fix path per test.
 - [conventional-commit](plugins/commit-helper/skills/conventional-commit/SKILL.md) — Conventional Commits message from staged diff.
+ - [rviewer](https://github.com/dreamdavidmit-glitch/rviewer) — Claude Code skill: drop in any textbook, get an interactive diagnostic quiz with real-time timing + 4D weak-point analysis.
 - *Add yours here.*
 
 ## Starter kits
