@@ -8,13 +8,15 @@
 
 **Last reference run:** 2026-04-22 · Claude Code v2.1.139 · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
 
+> **Pricing correction (September 2026).** The Opus costs in the tables below were computed assuming $15/$75 per million input/output tokens. Public list pricing for Opus 4.7 and 4.8 is **$5/$25** (fast mode $10/$50), so every Opus cost shown overstates by ~3x. Sonnet and Haiku costs are unaffected. This narrows the Sonnet-vs-Opus gap materially — see the corrected ratios in [Takeaways](#takeaways). Re-run the harness for numbers under corrected pricing.
+
 ---
 
 ## TL;DR
 
 | Question | Answer |
 |----------|--------|
-| Is Sonnet "enough" for most tasks? | Yes — ~95% success on the task set at ~25% of Opus cost. Reach for Opus on architecture, hard debugging, or plan mode. |
+| Is Sonnet "enough" for most tasks? | Yes — ~95% success on the task set. At corrected list pricing ($5/$25 Opus), Sonnet runs ~60% of Opus cost per task, not the ~25% the original table implied. Reach for Opus on architecture, hard debugging, or plan mode. |
 | Does a good CLAUDE.md pay for itself? | Yes, after ~3 turns. First turn costs ~600 extra input tokens; every subsequent turn saves ~1.5–3× that in exploration tokens. |
 | Is plan mode worth it? | For tasks touching ≥3 files or where the approach is non-obvious: yes, ~30–50% fewer total tokens end-to-end. For one-liners: no. |
 | Does prompt caching actually help? | Dramatically — 7–10× cheaper input tokens on cache hits. Keeping turns under 5 minutes apart is the single biggest cost lever. |
@@ -61,6 +63,8 @@ Same prompt, same repo, same CLAUDE.md. Three runs per cell, median reported. Co
 | T6 | Opus 4.7   | 46,100 | 3,700 | 1m 19s | $0.95 | ✅ pass |
 
 ### Takeaways
+
+> Costs below quote the table as recorded. At corrected Opus pricing ($5/$25), multiply quoted Opus costs by ~1/3: e.g. T3 Opus $1.02 becomes ~$0.34 vs Sonnet $0.22 — a ~1.5x gap, not ~4.6x. The success-rate takeaways are unchanged.
 
 - **Sonnet wins the cost-quality frontier for 5 of 6 tasks.** It's ~4–5× cheaper than Opus and near-indistinguishable on mechanical and moderate-reasoning work.
 - **Haiku is a trap for multi-file refactors.** Fast and cheap per turn, but the recovery cost from a partial refactor exceeds the savings. Good for T1-style single-file fixes.
@@ -116,7 +120,7 @@ Same prompt, run twice back-to-back vs. with a ≥ 5-minute gap (cache TTL expir
 ## Reproducing these numbers
 
 1. Clone this repo.
-2. Install Claude Code v2.1.139 or later: `npm install -g @anthropic-ai/claude-code`.
+2. Install Claude Code v2.1.272 or later: `npm install -g @anthropic-ai/claude-code`.
 3. Run the harness against your own codebase:
 
 ```bash

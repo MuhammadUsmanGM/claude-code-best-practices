@@ -144,13 +144,15 @@ This mode is never recommended for interactive development on a codebase you car
 
 | Scenario | Recommended Mode |
 |----------|-----------------|
-| Day-to-day development | Default |
+| Day-to-day development | Default, or auto mode on Pro/Max/Team |
 | Exploring a new codebase | Plan mode |
 | Routine tasks you've done before | Allowlisted tools |
 | Planning a large refactor | Plan mode, then switch to default |
 | CI/CD automation | Dangerously skip permissions (in containers) |
 | Pair programming with Claude | Default with selective allows |
 | Reviewing someone else's PR | Plan mode |
+
+Auto mode deserves its own treatment -- it replaces per-action prompts with a safety classifier plus sandboxing and changes several adjacent behaviors (inline `!` commands, subagent hand-backs, Monitor deadlines). See [Auto Mode](auto-mode.md) for the full picture.
 
 ## Combining Modes in a Session
 
@@ -170,3 +172,4 @@ This layered approach gives you maximum safety without sacrificing productivity.
 - [CI and Automation](ci-and-automation.md) -- Using --dangerously-skip-permissions in pipelines and containers
 - [Security Practices](security-practices.md) -- Secrets management and safe patterns
 - [Goal Mode](goal-mode.md) -- Long-running loops; permission interactions across turns
+- [Auto Mode](auto-mode.md) -- The classifier-driven mode; what it approves, what it escalates

@@ -9,7 +9,7 @@
 #   bash tools/benchmark.sh --repo /path/to/repo --models sonnet,haiku --out results.csv
 #   bash tools/benchmark.sh --help
 #
-# Requires: claude (>= 2.1.139), jq, bc. Optional: a git-clean target repo.
+# Requires: claude (>= 2.1.272), jq, bc. Optional: a git-clean target repo.
 
 set -euo pipefail
 
@@ -24,7 +24,7 @@ TASKS="T1,T2,T3,T4,T5"
 # Prices per million tokens, USD. Update when list prices change.
 # Format: input,output  (cache-hit input is ~10% of input per Anthropic docs)
 declare -A PRICE_IN PRICE_OUT
-PRICE_IN[opus-4.7]=15.00     ; PRICE_OUT[opus-4.7]=75.00
+PRICE_IN[opus-4.8]=5.00      ; PRICE_OUT[opus-4.8]=25.00
 PRICE_IN[sonnet-4.6]=3.00    ; PRICE_OUT[sonnet-4.6]=15.00
 PRICE_IN[haiku-4.5]=0.80     ; PRICE_OUT[haiku-4.5]=4.00
 
@@ -34,7 +34,7 @@ benchmark.sh — reproducible Claude Code benchmark harness
 
 Flags:
   --repo PATH         Target repo to benchmark against (default: $PWD)
-  --models LIST       Comma-separated: opus-4.7,sonnet-4.6,haiku-4.5 (default: sonnet-4.6)
+  --models LIST       Comma-separated: opus-4.8,sonnet-4.6,haiku-4.5 (default: sonnet-4.6)
   --tasks LIST        Comma-separated task IDs (default: T1,T2,T3,T4,T5). See --list-tasks.
   --runs N            Runs per (model,task) cell; median reported (default: 3)
   --plan-mode         Also run with plan mode on for each task

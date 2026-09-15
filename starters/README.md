@@ -13,6 +13,7 @@ and a couple of opinionated skills that match the stack's idioms.
 | [nextjs](nextjs/) | Next.js 15 App Router, TypeScript, RSC defaults | `CLAUDE.md` with server-vs-client conventions and Prisma/auth hooks |
 | [python](python/) | FastAPI or Django, `ruff` + `pytest`, `pyproject.toml` | `CLAUDE.md`, `.claude/settings.json`, skill: `/api-endpoint`, shared hooks |
 | [go](go/)       | Go modules, standard `go test`, optional `golangci-lint` | `CLAUDE.md`, `.claude/settings.json`, skill: `/add-handler`, shared hooks |
+| [rust](rust/)   | Axum or Actix services, `cargo test` + `clippy`, optional SQLx | `CLAUDE.md`, `.claude/settings.json`, skill: `/add-endpoint`, shared hooks |
 
 Each kit is ~5 files. They're meant to be read in full before dropping in —
 not every team wants every rule.
@@ -60,6 +61,8 @@ Then:
 3. Add a row to the table above.
 4. Run `bash tools/lint-claude-md.sh starters/<stack>/CLAUDE.md` — should
    pass with zero errors.
+5. Run `shellcheck` over any shell scripts you touched — CI blocks on
+   warnings.
 
 ## See also
 

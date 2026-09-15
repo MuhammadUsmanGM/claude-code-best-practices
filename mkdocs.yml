@@ -86,6 +86,7 @@ nav:
   - Workflows & Permissions:
       - Workflow Patterns: guides/workflow-patterns.md
       - Permission Modes: guides/permission-modes.md
+      - Auto Mode: guides/auto-mode.md
       - Debugging: guides/debugging.md
       - Testing Workflows: guides/testing-workflows.md
       - Migration Guide: guides/migration-guide.md
@@ -120,8 +121,10 @@ nav:
   - Starters:
       - Overview: starters/index.md
       - React: starters/react/CLAUDE.md
+      - Next.js: starters/nextjs/CLAUDE.md
       - Python: starters/python/CLAUDE.md
       - Go: starters/go/CLAUDE.md
+      - Rust: starters/rust/CLAUDE.md
   - Examples:
       - Skills: examples/skills/index.md
       - Hook Scripts: examples/hook-scripts.md
@@ -144,6 +147,7 @@ nav:
           - Monorepo: examples/claude-md-monorepo.md
   - Toolbox:
       - Quickstart Prompt: tools/quickstart-prompt.md
+      - Setup Auditor: tools/audit-claude-setup.md
       - Hook Recipes: tools/hooks/index.md
   - Benchmarks:
       - Summary: guides/benchmarks.md

@@ -3,7 +3,7 @@
 > **The community handbook for shipping real software with [Claude Code](https://docs.anthropic.com/en/docs/claude-code).**
 > Guides, working plugins, drop-in starter kits, published benchmarks, and a dogfooded `.claude/` setup you can copy.
 >
-> **Last updated:** May 12, 2026 · **v1.6** · Covers Claude Code **v2.1.139** · Opus 4.7 / Sonnet 4.6 / Haiku 4.5
+> **Last updated:** September 15, 2026 · **v1.7** · Covers Claude Code **v2.1.272** · Opus 4.8 / Sonnet 4.6 / Haiku 4.5
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -23,9 +23,9 @@ This repo pulls it together into one place — **opinionated, tested, and dogfoo
 
 ### What you'll find
 
-- **30+ guides** covering fundamentals, workflows, permissions, advanced architecture, cost management, and security.
+- **30+ guides** covering fundamentals, workflows, permissions, advanced architecture, cost management, and security — including auto mode and its safety classifier.
 - **11 `CLAUDE.md` templates** for React, Python, Go, Rust, Rails, Django, Next.js, Spring Boot, Flutter, monorepos, and a minimal starter.
-- **4 starter kits** — whole-project drop-ins (`CLAUDE.md` + `.claude/` with settings, skills, and hooks) for React, Next.js, Python, and Go.
+- **5 starter kits** — whole-project drop-ins (`CLAUDE.md` + `.claude/` with settings, skills, and hooks) for React, Next.js, Python, Go, and Rust.
 - **Working plugin** (`commit-helper`) with a Conventional Commits skill and a `PreToolUse` hook that blocks secrets before they're committed.
 - **Drop-in skills and hook scripts** — `/changelog`, `/pr-describe`, `/test-triage`, plus `block-secrets`, `format-on-write`, and `test-on-stop`.
 - **Published benchmarks** — model comparison, plan-mode on/off, CLAUDE.md payoff, and prompt-cache impact, with a reproducible harness so you can rerun them in your own repo.
@@ -102,6 +102,7 @@ claude-code-best-practices/
 | [Workflow Patterns](guides/workflow-patterns.md) | Common workflows for bug fixing, features, refactoring, and PR review |
 | [Goal Mode](guides/goal-mode.md) | **New in v1.6.** `/goal` completion conditions, when it beats plan mode + manual loops, headless and Remote Control |
 | [Permission Modes](guides/permission-modes.md) | Understanding and configuring permission levels |
+| [Auto Mode](guides/auto-mode.md) | **New in v1.7.** The classifier-driven mode: what it approves, what it escalates, per-command sandboxing |
 | [Debugging](guides/debugging.md) | Debugging strategies, stack traces, and fix-and-verify workflows |
 | [Testing Workflows](guides/testing-workflows.md) | Writing tests, TDD with Claude, fixing flaky tests, and coverage |
 | [Migration Guide](guides/migration-guide.md) | Migrating frameworks, languages, dependencies, and databases |
@@ -174,6 +175,7 @@ claude-code-best-practices/
 | [Cost Estimator](tools/estimate-cost.sh) | Estimates token usage and cost per task based on your codebase size |
 | [Benchmark Harness](tools/benchmark.sh) | **New in v1.3.** Reproducible headless harness — run the benchmarks in your own repo |
 | [Benchmark Summary](tools/benchmark-summary.sh) | **New in v1.4.** Aggregates `benchmarks/history/*.csv` into a living `benchmarks/latest.md` (nightly CI) |
+| [Setup Auditor](tools/audit-claude-setup.md) | **New in v1.7.** Scores a project's Claude Code setup out of 100: CLAUDE.md, settings, permissions, hooks |
 | [Hook Scripts](tools/hooks/README.md) | **New in v1.3.** Drop-in `block-secrets`, `format-on-write`, `test-on-stop` |
 | [Quickstart Prompt](tools/quickstart-prompt.md) | Copy-paste prompt that makes Claude auto-generate a CLAUDE.md |
 
@@ -195,6 +197,7 @@ Whole-project drop-in kits — `CLAUDE.md` + `.claude/` (settings, skills, hooks
 | [Next.js](starters/nextjs/) | **New in v1.5.** Next.js 15 App Router, TypeScript, RSC + server-action conventions |
 | [Python](starters/python/) | **New in v1.4.** FastAPI/Django, ruff+pytest+mypy, `/api-endpoint` skill |
 | [Go](starters/go/) | **New in v1.4.** Go services, gofmt+golangci-lint, `/add-handler` skill |
+| [Rust](starters/rust/) | **New in v1.7.** Rust services (Axum/Actix) with SQLx, clippy-gated, `/add-endpoint` skill |
 | [Starters overview](starters/README.md) | How to install a kit and conventions for adding new ones |
 
 ### Configuration References
@@ -227,7 +230,7 @@ A sixth workflow ([benchmarks](.github/workflows/benchmarks.yml)) is wired up bu
 ## Changelog and versioning
 
 - [`CHANGELOG.md`](CHANGELOG.md) follows [Keep a Changelog](https://keepachangelog.com/).
-- Versions are semver. Current release: **v1.6.0**.
+- Versions are semver. Current release: **v1.7.0**.
 - Breaking changes to starter kits, plugins, or hook scripts bump the major version.
 
 ## License

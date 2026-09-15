@@ -167,3 +167,4 @@ git diff HEAD~1
 - [MCP Servers](mcp-servers.md) -- secure configuration of external tool servers
 - [Enterprise Patterns](enterprise-patterns.md) -- governance and compliance at org scale
 - [Hooks](hooks.md) -- setting up audit logging with PostToolUse hooks
+- [Auto Mode](auto-mode.md) -- classifier approvals and per-command sandbox domains

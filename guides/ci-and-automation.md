@@ -263,3 +263,4 @@ Automated runs can accumulate cost quickly. Keep spend predictable:
 - [Cloud Integration](cloud-integration.md) — Using Claude Code with AWS, GCP, Azure, and containers
 - [Cost Management](cost-management.md) — Token budgeting and efficient prompting
 - [Goal Mode](goal-mode.md) — Headless `/goal` patterns; pair with `timeout` and turn caps
+- [Auto Mode](auto-mode.md) — Why unattended CI runs should keep explicit allowlists instead of the classifier

@@ -98,8 +98,8 @@ HAIKU_INPUT=1.00
 HAIKU_OUTPUT=5.00
 SONNET_INPUT=3.00
 SONNET_OUTPUT=15.00
-OPUS_INPUT=15.00
-OPUS_OUTPUT=75.00
+OPUS_INPUT=5.00
+OPUS_OUTPUT=25.00
 
 # ── Estimate costs per task type ─────────────────────────────────────────
 

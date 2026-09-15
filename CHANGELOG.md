@@ -3,6 +3,51 @@
 All notable changes to this project are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.7.0] - 2026-09-15
+
+### Added
+- **Auto Mode guide** ([`guides/auto-mode.md`](guides/auto-mode.md)) — covers
+  the classifier-driven permission mode (research preview March 2026, default
+  on Pro/Max/Team since August 2026): what it approves vs. escalates, the
+  safety classifier and sandboxing split, per-command `allowed_domains`
+  (v2.1.271), changed inline-`!` and subagent hand-back behavior, and Monitor
+  watch deadlines. Cross-linked bidirectionally with `permission-modes.md`,
+  `security-practices.md`, `ci-and-automation.md`, and `hooks.md`.
+- **Setup Auditor tool** —
+  [`tools/audit-claude-setup.sh`](tools/audit-claude-setup.sh) and
+  [`tools/audit-claude-setup.md`](tools/audit-claude-setup.md) score a
+  project's Claude Code setup out of 100 across CLAUDE.md, settings.json,
+  permissions, and hooks; exit 1 below 60 or on any FAIL with `--strict`,
+  so they work as a CI gate.
+- **Rust starter kit** ([`starters/rust/`](starters/rust/)) — drop-in kit for
+  Axum/Actix services: `CLAUDE.md` with layering/error-handling/testing
+  conventions, cargo allowlist + `cargo publish` deny in settings, vendored
+  hooks, and an `/add-endpoint` skill.
+
+### Changed
+- **Pricing corrected across tools.** Opus list pricing is $5/$25 per million
+  tokens (fast mode $10/$50), not the $15/$75 the tools assumed.
+  [`tools/benchmark.sh`](tools/benchmark.sh) and
+  [`tools/estimate-cost.sh`](tools/estimate-cost.sh) now carry correct
+  prices, and the harness default model list uses `opus-4.8`.
+- **Benchmarks guide documents the pricing correction**
+  ([`guides/benchmarks.md`](guides/benchmarks.md)) — the 2026-04-22 reference
+  run is kept as recorded, with a dated note explaining that quoted Opus
+  costs overstate by ~3x and a corrected Sonnet-vs-Opus ratio (~1.5x, not
+  ~4.6x). TL;DR updated to match. Numbers were **not rerun**; trigger the
+  benchmarks workflow on a fork with `ANTHROPIC_API_KEY` for fresh data.
+- **Versions and model IDs refreshed.** Bumped Claude Code references from
+  `v2.1.139` to `v2.1.272` where they mean "current version" (README header,
+  harness requirement, bug-report template) and Opus references from `4.7`
+  to `4.8` across README, `context-management.md`, `cost-management.md`,
+  `performance-tuning.md`, `troubleshooting.md`, and `goal-mode.md`.
+  Historical "added in v2.1.139" feature attributions are unchanged.
+- **README tables updated** — Auto Mode added to Workflows and Permissions,
+  Setup Auditor added to the Toolbox, Rust added to starter kits (now five),
+  and the header bumped to v1.7 / 2026-09-15.
+- **mkdocs nav updated** — Auto Mode guide, Setup Auditor doc, and the
+  Rust + Next.js starter kits (Next.js was missing from nav since v1.5).
+
 ## [1.6.0] - 2026-05-12
 
 ### Added

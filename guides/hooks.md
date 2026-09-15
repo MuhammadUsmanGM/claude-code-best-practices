@@ -252,3 +252,4 @@ Prevent Claude from running database migrations without confirmation:
 - [IDE Integration](ide-integration.md) — Hooks alongside editor workflows
 - [Hook Script Examples](../examples/hook-scripts.md) -- Ready-to-use hook configurations
 - [Security Practices](security-practices.md) -- Security-focused hooks
+- [Auto Mode](auto-mode.md) -- Deterministic hook guards alongside the safety classifier

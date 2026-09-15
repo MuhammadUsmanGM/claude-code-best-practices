@@ -71,7 +71,7 @@ Rules of thumb:
 
 Goal mode amplifies whatever your per-turn cost already is. A session burning 5K tokens per turn for 4 turns becomes 5K × 12 turns when the loop runs longer than expected. Three levers:
 
-1. **Use Sonnet 4.6 unless you have a reason not to.** Opus 4.7 in a 30-turn loop adds up fast. See [Performance Tuning](performance-tuning.md) for model selection.
+1. **Use Sonnet 4.6 unless you have a reason not to.** Opus 4.8 in a 30-turn loop adds up fast. See [Performance Tuning](performance-tuning.md) for model selection.
 2. **Watch the overlay.** If turns and tokens are climbing without visible progress, interrupt. The loop will not get unstuck by itself.
 3. **Bound the goal.** `/goal` is not `/wishlist`. The first version of the condition should be the smallest goal you can ship; expand only if it converges quickly.
 
